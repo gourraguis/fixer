@@ -10,11 +10,11 @@ As a developer, I need to run the necessary commands to install and configure sh
     npx shadcn@latest init
     ```
 
-2.  After initialization, manually edit the `src/app/globals.css` file to change the primary color to a violet shade to achieve the desired bold aesthetic. An example using HSL values:
+2.  After initialization, manually edit the `src/app/globals.css` file to change the primary color to a violet shade to achieve the desired bold aesthetic. An example using oklch values:
     ```css
     /* In :root and .dark sections, replace the --primary variables */
-    --primary: 259 94% 51%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 0.61 0.21 289;
+    --primary-foreground: 0.99 0.01 257;
     ```
 
 **Recommended Configuration (for `init` command):**
