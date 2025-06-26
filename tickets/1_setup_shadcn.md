@@ -11,8 +11,8 @@ npx shadcn-ui@latest init
 ```
 
 **Recommended Configuration:**
-- **Which style would you like to use?** `Default`
-- **Which color would you like to use as base color?** `Slate`
+- **Which style would you like to use?** `New York`
+- **Which color would you like to use as base color?** `Violet`
 - **Where is your global CSS file?** `src/app/globals.css`
 - **Do you want to use CSS variables for colors?** `Yes`
 - **Where is your tailwind.config.js file?** `tailwind.config.ts` (or `.js` if that's what you have)
