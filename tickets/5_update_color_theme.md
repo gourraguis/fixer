@@ -4,7 +4,7 @@
 The current theme has a custom violet primary color, but the other UI colors (background, cards, inputs, etc.) are still based on the default 'Slate' theme from the `shadcn/ui` initialization. This creates a visual disconnect. This task is to update all color variables in `src/app/globals.css` to create a cohesive, violet-based dark theme.
 
 **Execution Steps:**
-1.  Review the existing primary color values in `src/app/globals.css` which were set in a previous ticket:
+1.  **Verify & Apply Prerequisite:** This task depends on the primary color being set as per `tickets/1_setup_shadcn.md`. The developer must first verify that the following values for `--primary` and `--primary-foreground` are present in `src/app/globals.css` inside both the `:root` and `.dark` selectors. If they are missing or incorrect, they must be added or updated before proceeding.
     ```css
     --primary: 0.61 0.21 289;
     --primary-foreground: 0.99 0.01 257;
