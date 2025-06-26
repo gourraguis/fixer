@@ -5,7 +5,7 @@
 *   All default Next.js boilerplate content must be removed from the `Home` page component.
 *   Import and render the `MessageList` component (from `tickets/3_create_messagelist_component.md`).
 *   The page layout must be styled to be full-screen, with the `MessageList` component filling the viewport.
-*   The background color of the page should be appropriate for a chat application.
+*   The page layout should use the themed background color (e.g., by applying the `bg-background` class to the main container) to ensure consistency with the shadcn/ui theme.
 
 **Acceptance Criteria:**
 -   Given a user navigates to the application's root URL (`/`).
