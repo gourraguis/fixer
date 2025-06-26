@@ -6,9 +6,10 @@ As a user, I want a text input field and a send button, so that I can type and s
 **Technical Requirements:**
 *   Create a new component, `ChatInput`, preferably in `src/components/ui/chat-input.tsx`.
 *   The component should be wrapped in a `<form>` element to handle submissions.
-*   The form should contain an `Input` field and a `Button`, arranged horizontally in a single row.
+*   The form should contain an `Input` field and an icon `Button`, arranged horizontally in a single row.
     *   The `Input` component should expand to fill the available horizontal space.
-    *   The `Button` component should be positioned to the right of the input.
+    *   The `Button` component should be positioned to the right of the input. It should be an icon-only button (no text).
+    *   The button should display a "Send" icon from the `lucide-react` library (e.g., `Send` or `ArrowUp`).
     *   Use the existing `shadcn/ui` `Input` and `Button` components for a consistent look and feel.
 *   The component must manage the state of the text in the input field.
 *   The form's `onSubmit` handler should be used to capture both button clicks and "Enter" key presses. The handler must:
@@ -18,7 +19,7 @@ As a user, I want a text input field and a send button, so that I can type and s
 *   Add the new `ChatInput` component to the main chat page (`src/app/page.tsx`) at the bottom of the screen, below the `MessageList`.
 
 **Acceptance Criteria:**
-*   **Given** the application is running, **When** I view the main page, **Then** I see a text input field and a "Send" button below the message list area, arranged in a single row.
+*   **Given** the application is running, **When** I view the main page, **Then** I see a text input field and a "Send" icon button below the message list area, arranged in a single row.
 *   **Given** I have typed "Hello world" into the input field, **When** I click the "Send" button, **Then** the string "Hello world" is logged to the browser console, and the input field becomes empty.
 *   **Given** I have typed "Test message" into the input field, **When** I press the "Enter" key, **Then** the string "Test message" is logged to the browser console, and the input field becomes empty.
 
