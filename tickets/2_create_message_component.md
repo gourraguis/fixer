@@ -7,8 +7,8 @@
     *   `text`: `string` - The content of the message.
     *   `variant`: `'sent' | 'received'` - To control the styling.
 *   Use Tailwind CSS classes for styling, following the conventions established by shadcn/ui.
-*   The 'sent' variant should be right-aligned with a distinct background color.
-*   The 'received' variant should be left-aligned with a different background color.
+*   The 'sent' variant should be right-aligned and use the theme's primary color for its background (e.g., by applying `bg-primary` and `text-primary-foreground` classes).
+*   The 'received' variant should be left-aligned and use a muted color for its background (e.g., by applying `bg-muted` and `text-muted-foreground` classes).
 
 **Acceptance Criteria:**
 -   Given the `Message` component is rendered with `variant='sent'`.
