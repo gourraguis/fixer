@@ -43,7 +43,7 @@ export function MobileMenu({ addMessage }: MobileMenuProps) {
           className="w-48 border-0 bg-primary text-primary-foreground [&_svg]:stroke-primary-foreground"
         >
           <DropdownMenuItem
-            className="focus:bg-primary-foreground/10"
+            className="cursor-pointer focus:bg-primary-foreground/10 focus:text-primary-foreground"
             onClick={() =>
               addMessage({
                 text: 'Tell me about your projects.',
@@ -56,7 +56,7 @@ export function MobileMenu({ addMessage }: MobileMenuProps) {
           </DropdownMenuItem>
           <DropdownMenuItem
             asChild
-            className="focus:bg-primary-foreground/10"
+            className="cursor-pointer focus:bg-primary-foreground/10 focus:text-primary-foreground"
           >
             <a href="/gourragui_cv.pdf" download>
               <Download className="mr-2 h-4 w-4" />
@@ -65,7 +65,7 @@ export function MobileMenu({ addMessage }: MobileMenuProps) {
           </DropdownMenuItem>
           <DropdownMenuItem
             asChild
-            className="focus:bg-primary-foreground/10"
+            className="cursor-pointer focus:bg-primary-foreground/10 focus:text-primary-foreground"
           >
             <a
               href="https://github.com/gourraguis"
