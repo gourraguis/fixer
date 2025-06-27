@@ -6,17 +6,20 @@ import * as React from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
+import { Message } from '@/types';
 
-export interface ChatInputProps extends React.HTMLAttributes<HTMLFormElement> {}
+export interface ChatInputProps extends React.HTMLAttributes<HTMLFormElement> {
+  addMessage: (message: Message) => void;
+}
 
 const ChatInput = React.forwardRef<HTMLFormElement, ChatInputProps>(
-  ({ className, ...props }, ref) => {
+  ({ className, addMessage, ...props }, ref) => {
     const [input, setInput] = React.useState('');
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       if (!input.trim()) return;
-      console.log(input);
+      addMessage({ text: input, variant: 'sent' });
       setInput('');
     };
 
