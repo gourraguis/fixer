@@ -1,9 +1,9 @@
 import * as React from 'react';
-
 import { Message } from '@/components/chat/message';
 import { TypingIndicator } from '@/components/chat/typing-indicator';
 import { cn } from '@/lib/utils';
 import { useChatStore } from '@/stores/chat-store';
+import styles from './messagelist.module.css';
 
 export interface MessageListProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -19,7 +19,11 @@ const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
     return (
       <div
         ref={ref}
-        className={cn('flex flex-col space-y-4 overflow-y-auto pb-4', className)}
+        className={cn(
+          'flex flex-col space-y-4 overflow-y-auto pb-4',
+          className,
+          styles.messageList,
+        )}
         {...props}
       >
         {messages.flatMap((message, messageIndex) =>

@@ -1,10 +1,11 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import styles from './header.module.css';
 
-import { MobileMenu } from './mobile-menu';
-
-export function Header() {
+export function Header({ children }: { children: React.ReactNode }) {
   return (
-    <header className="flex items-center justify-between bg-primary p-3 text-primary-foreground">
+    <header
+      className={`flex items-center justify-between bg-primary p-3 text-primary-foreground ${styles.header}`}
+    >
       <div className="flex items-center gap-4">
         <Avatar>
           <AvatarImage src="/pdp.jpg" alt="Abderrahmane Gourragui" />
@@ -17,7 +18,7 @@ export function Header() {
           </p>
         </div>
       </div>
-      <MobileMenu />
+      {children}
     </header>
   );
 }
