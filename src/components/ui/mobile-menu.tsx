@@ -17,12 +17,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
 import { Message } from '@/types';
 
 interface MobileMenuProps {
@@ -31,8 +25,7 @@ interface MobileMenuProps {
 
 export function MobileMenu({ addMessage }: MobileMenuProps) {
   return (
-    <TooltipProvider>
-      <DropdownMenu>
+    <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="icon">
             <Menu className="h-6 w-6" />
@@ -80,50 +73,31 @@ export function MobileMenu({ addMessage }: MobileMenuProps) {
           <DropdownMenuLabel>
             <p className="text-center text-sm font-semibold">Connect</p>
             <div className="mt-1 flex items-center justify-center gap-x-4">
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <a
-                    href="https://github.com/gourraguis"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2"
-                  >
-                    <Github className="h-5 w-5" />
-                  </a>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>GitHub</p>
-                </TooltipContent>
-              </Tooltip>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <a
-                    href="https://www.linkedin.com/in/gourraguis/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2"
-                  >
-                    <Linkedin className="h-5 w-5" />
-                  </a>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>LinkedIn</p>
-                </TooltipContent>
-              </Tooltip>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <a href="mailto:work@gourragui.com" className="p-2">
-                    <Mail className="h-5 w-5" />
-                  </a>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Email</p>
-                </TooltipContent>
-              </Tooltip>
+              <a
+                href="https://github.com/gourraguis"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 transition-opacity hover:opacity-75"
+              >
+                <Github className="h-5 w-5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/gourraguis/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 transition-opacity hover:opacity-75"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a
+                href="mailto:work@gourragui.com"
+                className="p-2 transition-opacity hover:opacity-75"
+              >
+                <Mail className="h-5 w-5" />
+              </a>
             </div>
           </DropdownMenuLabel>
         </DropdownMenuContent>
       </DropdownMenu>
-    </TooltipProvider>
   );
 }
