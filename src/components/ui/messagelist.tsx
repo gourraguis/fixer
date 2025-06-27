@@ -1,15 +1,17 @@
 import * as React from 'react';
 
 import { Message } from '@/components/ui/message';
+import { TypingIndicator } from '@/components/ui/typing-indicator';
 import { cn } from '@/lib/utils';
 import type { Message as MessageType } from '@/types';
 
 export interface MessageListProps extends React.HTMLAttributes<HTMLDivElement> {
   messages: MessageType[];
+  isLoading?: boolean;
 }
 
 const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
-  ({ className, messages, ...props }, ref) => {
+  ({ className, messages, isLoading, ...props }, ref) => {
     return (
       <div
         ref={ref}
@@ -23,6 +25,7 @@ const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
             text={message.text}
           />
         ))}
+        {isLoading && <TypingIndicator />}
       </div>
     );
   },

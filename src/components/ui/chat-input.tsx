@@ -9,18 +9,19 @@ import { cn } from '@/lib/utils';
 import { Message } from '@/types';
 
 export interface ChatInputProps extends React.HTMLAttributes<HTMLFormElement> {
-  addMessage: (message: Message) => void;
+  addMessage: (message: Omit<Message, 'id'>) => void;
+  isLoading?: boolean;
 }
 
 const ChatInput = React.forwardRef<HTMLFormElement, ChatInputProps>(
-  ({ className, addMessage, ...props }, ref) => {
+  ({ className, addMessage, isLoading, ...props }, ref) => {
     const [input, setInput] = React.useState('');
 
     const isInputEmpty = !input.trim();
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      if (isInputEmpty) return;
+      if (isInputEmpty || isLoading) return;
       addMessage({ text: input, variant: 'sent' });
       setInput('');
     };
@@ -37,8 +38,9 @@ const ChatInput = React.forwardRef<HTMLFormElement, ChatInputProps>(
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type a message..."
           className="flex-1"
+          disabled={isLoading}
         />
-        <Button type="submit" size="icon" disabled={isInputEmpty}>
+        <Button type="submit" size="icon" disabled={isInputEmpty || isLoading}>
           <Send className="h-4 w-4" />
           <span className="sr-only">Send</span>
         </Button>
