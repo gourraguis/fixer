@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <main className="flex h-screen flex-col items-center bg-background p-4">
       <div className="flex h-full w-full max-w-2xl flex-col gap-4">
-        <Header />
+        <Header addMessage={addMessage} />
         <MessageList messages={messages} isLoading={isLoading} className="flex-1" />
         <ChatInput addMessage={addMessage} isLoading={isLoading} />
       </div>
