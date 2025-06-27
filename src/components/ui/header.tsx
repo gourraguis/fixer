@@ -1,4 +1,4 @@
-import { Download, Github, Linkedin, Menu } from 'lucide-react';
+import { Briefcase, Download, Github, Linkedin, Menu } from 'lucide-react';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
@@ -40,7 +40,8 @@ export function Header({ addMessage }: HeaderProps) {
               })
             }
           >
-            View Projects
+            <Briefcase className="mr-2 h-4 w-4" />
+            <span>View Projects</span>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
             <a href="/gourragui_cv.pdf" download>
