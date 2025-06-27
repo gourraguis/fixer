@@ -1,8 +1,8 @@
 'use client';
 
-import { ChatInput } from '@/components/ui/chat-input';
-import { Header } from '@/components/ui/header';
-import { MessageList } from '@/components/ui/messagelist';
+import { ChatInput } from '@/components/chat/chat-input';
+import { Header } from '@/components/chat/header';
+import { MessageList } from '@/components/chat/messagelist';
 import { useMessages } from '@/hooks/use-messages';
 
 export default function Home() {

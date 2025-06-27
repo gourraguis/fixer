@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Message } from '@/components/ui/message';
-import { TypingIndicator } from '@/components/ui/typing-indicator';
+import { Message } from '@/components/chat/message';
+import { TypingIndicator } from '@/components/chat/typing-indicator';
 import { cn } from '@/lib/utils';
 import type { Message as MessageType } from '@/types';
 
