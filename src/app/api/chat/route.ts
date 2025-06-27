@@ -21,5 +21,13 @@ export async function POST(request: Request) {
   // Add a 2-second delay for testing
   await new Promise((resolve) => setTimeout(resolve, 2000));
 
+  // Fail 50% of the time for testing
+  if (Math.random() > 0.5) {
+    return NextResponse.json(
+      { error: 'Internal Server Error' },
+      { status: 500 },
+    );
+  }
+
   return NextResponse.json({ reply: body.message });
 }
