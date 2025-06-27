@@ -31,7 +31,10 @@ const ChatInput = React.forwardRef<HTMLFormElement, ChatInputProps>(
         {...props}
         ref={ref}
         onSubmit={handleSubmit}
-        className={cn('flex w-full items-center space-x-2', className)}
+        className={cn(
+          'flex w-full items-center space-x-2 rounded-lg shadow-lg',
+          className,
+        )}
       >
         <Input
           value={input}
