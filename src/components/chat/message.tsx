@@ -1,4 +1,5 @@
 import * as React from 'react';
+import ReactMarkdown from 'react-markdown';
 
 import { cn } from '@/lib/utils';
 
@@ -28,7 +29,21 @@ const Message = React.forwardRef<HTMLDivElement, MessageProps>(
             className
           )}
         >
-          {text}
+          <ReactMarkdown
+            components={{
+              ul: ({ node: _, ...props }) => (
+                <ul className="list-disc list-inside" {...props} />
+              ),
+              ol: ({ node: _, ...props }) => (
+                <ol className="list-decimal list-inside" {...props} />
+              ),
+              p: ({ node: _, ...props }) => (
+                <p className="mb-2 last:mb-0" {...props} />
+              ),
+            }}
+          >
+            {text}
+          </ReactMarkdown>
         </div>
       </div>
     );
