@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { ChatService } from '@/services/chat-service';
 
+export const runtime = 'edge';
+
 export async function POST(request: Request) {
   let body;
   try {
