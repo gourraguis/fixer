@@ -16,9 +16,11 @@ const ChatInput = React.forwardRef<HTMLFormElement, ChatInputProps>(
   ({ className, addMessage, ...props }, ref) => {
     const [input, setInput] = React.useState('');
 
+    const isInputEmpty = !input.trim();
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      if (!input.trim()) return;
+      if (isInputEmpty) return;
       addMessage({ text: input, variant: 'sent' });
       setInput('');
     };
@@ -36,7 +38,7 @@ const ChatInput = React.forwardRef<HTMLFormElement, ChatInputProps>(
           placeholder="Type a message..."
           className="flex-1"
         />
-        <Button type="submit" size="icon" disabled={!input.trim()}>
+        <Button type="submit" size="icon" disabled={isInputEmpty}>
           <Send className="h-4 w-4" />
           <span className="sr-only">Send</span>
         </Button>
