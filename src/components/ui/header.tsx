@@ -38,7 +38,7 @@ export function Header({ addMessage }: HeaderProps) {
           <AvatarImage src="/pdp.jpg" alt="Abderrahmane Gourragui" />
           <AvatarFallback>AG</AvatarFallback>
         </Avatar>
-        <h1 className="text-lg font-semibold">Abderrahmane Gourragui</h1>
+        <h1 className="text-lg font-bold">Abderrahmane Gourragui</h1>
       </div>
       <TooltipProvider>
         <DropdownMenu>
