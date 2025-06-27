@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { v4 as uuidv4 } from 'uuid';
 
 import { INITIAL_MESSAGES } from '@/constants/messages';
-import { Message } from '@/types';
+import { Message } from '@/types/message';
 
 interface ChatState {
   messages: Message[];
@@ -26,7 +26,7 @@ export const useChatStore = create<ChatState>((set, get) => ({
       messages: [...state.messages, newMessage],
     }));
 
-    if (message.variant === 'sent') {
+    if (message.role === 'user') {
       set({ isLoading: true });
       try {
         const response = await fetch('/api/chat', {
@@ -45,7 +45,7 @@ export const useChatStore = create<ChatState>((set, get) => ({
         const replyMessage: Message = {
           id: uuidv4(),
           text: data.reply,
-          variant: 'received',
+          role: 'model',
         };
         set((state) => ({
           messages: [...state.messages, replyMessage],
@@ -54,7 +54,7 @@ export const useChatStore = create<ChatState>((set, get) => ({
         const errorMessage: Message = {
           id: uuidv4(),
           text: "Whoops! My AI assistant must be on a coffee break, or I've forgotten to pay the cloud bill again. Please reach out to me on email or LinkedIn instead.",
-          variant: 'received',
+          role: 'model',
         };
         set((state) => ({
           messages: [...state.messages, errorMessage],

@@ -1,5 +1,5 @@
 export interface Message {
   id: string;
   text: string;
-  variant: 'sent' | 'received';
+  role: 'user' | 'model';
 }

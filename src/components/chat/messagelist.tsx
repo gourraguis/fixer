@@ -29,7 +29,7 @@ const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
             .map((paragraph, paragraphIndex) => (
               <Message
                 key={`${messageIndex}-${paragraphIndex}`}
-                variant={message.variant}
+                role={message.role}
                 text={paragraph}
               />
             )),

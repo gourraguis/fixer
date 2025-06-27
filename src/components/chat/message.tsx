@@ -5,17 +5,17 @@ import { cn } from '@/lib/utils';
 
 export interface MessageProps {
   text: string;
-  variant: 'sent' | 'received';
+  role: 'user' | 'model';
   className?: string;
 }
 
 const Message = React.forwardRef<HTMLDivElement, MessageProps>(
-  ({ className, text, variant }, ref) => {
+  ({ className, text, role }, ref) => {
     return (
       <div
         className={cn(
           'flex w-full',
-          variant === 'sent' ? 'justify-end' : 'justify-start'
+          role === 'user' ? 'justify-end' : 'justify-start'
         )}
       >
         <div
@@ -23,8 +23,8 @@ const Message = React.forwardRef<HTMLDivElement, MessageProps>(
           className={cn(
             'prose max-w-2xl lg:max-w-4xl rounded-lg p-3 shadow-md break-words',
             {
-              'bg-primary text-primary-foreground': variant === 'sent',
-              'bg-muted text-muted-foreground': variant === 'received',
+              'bg-primary text-primary-foreground': role === 'user',
+              'bg-muted text-muted-foreground': role === 'model',
             },
             className,
           )}
