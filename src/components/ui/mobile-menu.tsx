@@ -26,17 +26,17 @@ interface MobileMenuProps {
 export function MobileMenu({ addMessage }: MobileMenuProps) {
   const menuItems = [
     {
+      Icon: Download,
+      label: 'Download Resume',
+      href: '/gourragui_cv.pdf',
+      download: true,
+    },
+    {
       Icon: LayoutGrid,
       label: 'Classic Portfolio',
       href: 'https://gourragui.com',
       target: '_blank',
       rel: 'noopener noreferrer',
-    },
-    {
-      Icon: Download,
-      label: 'Download Resume',
-      href: '/gourragui_cv.pdf',
-      download: true,
     },
     {
       Icon: Code,
