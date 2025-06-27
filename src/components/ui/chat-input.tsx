@@ -36,7 +36,7 @@ const ChatInput = React.forwardRef<HTMLFormElement, ChatInputProps>(
           placeholder="Type a message..."
           className="flex-1"
         />
-        <Button type="submit" size="icon">
+        <Button type="submit" size="icon" disabled={!input.trim()}>
           <Send className="h-4 w-4" />
           <span className="sr-only">Send</span>
         </Button>
