@@ -4,7 +4,7 @@ import { Send } from 'lucide-react';
 import * as React from 'react';
 
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
 import { Message } from '@/types';
 
@@ -16,6 +16,7 @@ export interface ChatInputProps extends React.HTMLAttributes<HTMLFormElement> {
 const ChatInput = React.forwardRef<HTMLFormElement, ChatInputProps>(
   ({ className, addMessage, isLoading, ...props }, ref) => {
     const [input, setInput] = React.useState('');
+    const textareaRef = React.useRef<HTMLTextAreaElement>(null);
 
     const isInputEmpty = !input.trim();
 
@@ -26,6 +27,20 @@ const ChatInput = React.forwardRef<HTMLFormElement, ChatInputProps>(
       setInput('');
     };
 
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        handleSubmit(e as any);
+      }
+    };
+
+    React.useEffect(() => {
+      if (textareaRef.current) {
+        textareaRef.current.style.height = 'auto';
+        textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+      }
+    }, [input]);
+
     return (
       <form
         {...props}
@@ -33,12 +48,15 @@ const ChatInput = React.forwardRef<HTMLFormElement, ChatInputProps>(
         onSubmit={handleSubmit}
         className={cn('flex w-full items-center space-x-2', className)}
       >
-        <Input
+        <Textarea
+          ref={textareaRef}
           value={input}
           onChange={(e) => setInput(e.target.value)}
+          onKeyDown={handleKeyDown}
           placeholder="Type a message..."
           className="flex-1 shadow-lg"
           disabled={isLoading}
+          rows={1}
         />
         <Button
           type="submit"
