@@ -5,7 +5,8 @@
 **Technical Requirements:**
 - Create a new file `src/hooks/use-messages.ts`.
 - The hook should be named `useMessages`.
-- It should manage an array of messages. Each message object should conform to a `Message` type with properties like `id` (string, unique), `text` (string), and `variant` ('sent' | 'received').
+- Create a new file `src/types/index.ts` to define a shared `Message` interface with properties: `id` (string), `text` (string), and `variant` ('sent' | 'received').
+- The hook should manage an array of `Message` objects, importing the type from `src/types/index.ts`.
 - The hook should expose the current list of messages.
 - The hook should expose a function `addMessage(message: Omit<Message, 'id'>)` to add a new message to the list. This function should generate a unique ID for each new message using the `uuid` library.
 - Initialize the hook with a default welcome message: `{ text: "Hello! How can I help you today?", variant: "received" }`.
