@@ -15,7 +15,12 @@ export function Header({ addMessage }: HeaderProps) {
           <AvatarImage src="/pdp.jpg" alt="Abderrahmane Gourragui" />
           <AvatarFallback>AG</AvatarFallback>
         </Avatar>
-        <h1 className="text-lg font-bold">Abderrahmane Gourragui</h1>
+        <div className="flex flex-col">
+          <h1 className="text-lg font-bold">Abderrahmane Gourragui</h1>
+          <p className="text-xs text-primary-foreground/80">
+            AI-Powered Portfolio
+          </p>
+        </div>
       </div>
       <MobileMenu addMessage={addMessage} />
     </header>

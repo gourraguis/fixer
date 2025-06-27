@@ -21,12 +21,12 @@ const Message = React.forwardRef<HTMLDivElement, MessageProps>(
         <div
           ref={ref}
           className={cn(
-            'max-w-xs rounded-lg p-2 break-words',
+            'prose max-w-xs rounded-lg p-3 shadow-md break-words',
             {
               'bg-primary text-primary-foreground': variant === 'sent',
               'bg-muted text-muted-foreground': variant === 'received',
             },
-            className
+            className,
           )}
         >
           <ReactMarkdown
@@ -47,7 +47,7 @@ const Message = React.forwardRef<HTMLDivElement, MessageProps>(
         </div>
       </div>
     );
-  }
+  },
 );
 Message.displayName = 'Message';
 
