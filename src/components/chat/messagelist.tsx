@@ -3,16 +3,14 @@ import * as React from 'react';
 import { Message } from '@/components/chat/message';
 import { TypingIndicator } from '@/components/chat/typing-indicator';
 import { cn } from '@/lib/utils';
-import type { Message as MessageType } from '@/types';
+import { useChatStore } from '@/stores/chat-store';
 
-export interface MessageListProps extends React.HTMLAttributes<HTMLDivElement> {
-  messages: MessageType[];
-  isLoading?: boolean;
-}
+export interface MessageListProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
-  ({ className, messages, isLoading, ...props }, ref) => {
+  ({ className, ...props }, ref) => {
     const messagesEndRef = React.useRef<HTMLDivElement>(null);
+    const { messages, isLoading } = useChatStore();
 
     React.useEffect(() => {
       messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
