@@ -35,8 +35,8 @@ export function Header({ addMessage }: HeaderProps) {
           <DropdownMenuItem
             onClick={() =>
               addMessage({
-                role: 'user',
-                content: 'Tell me about your projects.',
+                text: 'Tell me about your projects.',
+                variant: 'sent',
               })
             }
           >
