@@ -1,26 +1,33 @@
-import { useState } from 'react';
+import { create } from 'zustand';
 import { v4 as uuidv4 } from 'uuid';
-import { type Message } from '@/types';
+
 import { INITIAL_MESSAGES } from '@/constants/messages';
+import { Message } from '@/types';
 
-export const useMessages = () => {
-  const [messages, setMessages] = useState<Message[]>(() =>
-    INITIAL_MESSAGES.map((message) => ({
-      ...message,
-      id: uuidv4(),
-    })),
-  );
-  const [isLoading, setIsLoading] = useState(false);
+interface ChatState {
+  messages: Message[];
+  isLoading: boolean;
+  addMessage: (message: Omit<Message, 'id'>) => Promise<void>;
+}
 
-  const addMessage = async (message: Omit<Message, 'id'>) => {
+export const useChatStore = create<ChatState>((set, get) => ({
+  messages: INITIAL_MESSAGES.map((message) => ({
+    ...message,
+    id: uuidv4(),
+  })),
+  isLoading: false,
+  addMessage: async (message) => {
     const newMessage: Message = {
       id: uuidv4(),
       ...message,
     };
-    setMessages((prevMessages) => [...prevMessages, newMessage]);
+
+    set((state) => ({
+      messages: [...state.messages, newMessage],
+    }));
 
     if (message.variant === 'sent') {
-      setIsLoading(true);
+      set({ isLoading: true });
       try {
         const response = await fetch('/api/chat', {
           method: 'POST',
@@ -40,23 +47,21 @@ export const useMessages = () => {
           text: data.reply,
           variant: 'received',
         };
-        setMessages((prevMessages) => [...prevMessages, replyMessage]);
+        set((state) => ({
+          messages: [...state.messages, replyMessage],
+        }));
       } catch (error) {
         const errorMessage: Message = {
           id: uuidv4(),
           text: "Whoops! My AI assistant must be on a coffee break, or I've forgotten to pay the cloud bill again. Please reach out to me on email or LinkedIn instead.",
           variant: 'received',
         };
-        setMessages((prevMessages) => [...prevMessages, errorMessage]);
+        set((state) => ({
+          messages: [...state.messages, errorMessage],
+        }));
       } finally {
-        setIsLoading(false);
+        set({ isLoading: false });
       }
     }
-  };
-
-  return {
-    messages,
-    addMessage,
-    isLoading,
-  };
-};
+  },
+}));

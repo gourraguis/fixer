@@ -6,17 +6,15 @@ import * as React from 'react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
-import { Message } from '@/types';
+import { useChatStore } from '@/stores/chat-store';
 
-export interface ChatInputProps extends React.HTMLAttributes<HTMLFormElement> {
-  addMessage: (message: Omit<Message, 'id'>) => void;
-  isLoading?: boolean;
-}
+export interface ChatInputProps extends React.HTMLAttributes<HTMLFormElement> {}
 
 const ChatInput = React.forwardRef<HTMLFormElement, ChatInputProps>(
-  ({ className, addMessage, isLoading, ...props }, ref) => {
+  ({ className, ...props }, ref) => {
     const [input, setInput] = React.useState('');
     const textareaRef = React.useRef<HTMLTextAreaElement>(null);
+    const { addMessage, isLoading } = useChatStore();
 
     const isInputEmpty = !input.trim();
 
@@ -62,9 +60,9 @@ const ChatInput = React.forwardRef<HTMLFormElement, ChatInputProps>(
           type="submit"
           size="icon"
           disabled={isInputEmpty || isLoading}
-          className="shadow-lg"
+          className="h-16 w-16 flex-shrink-0 shadow-lg"
         >
-          <Send className="h-4 w-4" />
+          <Send className="size-9" />
           <span className="sr-only">Send</span>
         </Button>
       </form>

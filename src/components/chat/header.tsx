@@ -1,13 +1,8 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Message } from '@/types';
 
 import { MobileMenu } from './mobile-menu';
 
-interface HeaderProps {
-  addMessage: (message: Omit<Message, 'id'>) => void;
-}
-
-export function Header({ addMessage }: HeaderProps) {
+export function Header() {
   return (
     <header className="flex items-center justify-between bg-primary p-3 text-primary-foreground">
       <div className="flex items-center gap-4">
@@ -22,7 +17,7 @@ export function Header({ addMessage }: HeaderProps) {
           </p>
         </div>
       </div>
-      <MobileMenu addMessage={addMessage} />
+      <MobileMenu />
     </header>
   );
 }

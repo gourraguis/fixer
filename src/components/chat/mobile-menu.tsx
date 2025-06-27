@@ -18,13 +18,8 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useUiStore } from '@/stores/ui-store';
-import { Message } from '@/types';
 
-interface MobileMenuProps {
-  addMessage: (message: Omit<Message, 'id'>) => void;
-}
-
-export function MobileMenu({ addMessage }: MobileMenuProps) {
+export function MobileMenu() {
   const { isMenuOpen, toggleMenu } = useUiStore();
 
   const menuItems = [
@@ -81,8 +76,8 @@ export function MobileMenu({ addMessage }: MobileMenuProps) {
         className="z-50 w-56 border-0 bg-primary text-primary-foreground [&_svg]:stroke-primary-foreground"
       >
         {menuItems.map(
-          ({ Icon, label, href, download, target, rel, onClick }, index) =>
-            href ? (
+          ({ Icon, label, href, download, target, rel }, index) =>
+            (
               <DropdownMenuItem
                 key={index}
                 asChild
@@ -93,16 +88,7 @@ export function MobileMenu({ addMessage }: MobileMenuProps) {
                   <span>{label}</span>
                 </a>
               </DropdownMenuItem>
-            ) : (
-              <DropdownMenuItem
-                key={index}
-                className="cursor-pointer focus:bg-primary-foreground/10 focus:text-primary-foreground"
-                onClick={onClick}
-              >
-                <Icon className="mr-2 h-4 w-4" />
-                <span>{label}</span>
-              </DropdownMenuItem>
-            ),
+            )
         )}
         <DropdownMenuSeparator className="bg-primary-foreground/20" />
         <DropdownMenuLabel>
