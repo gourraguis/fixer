@@ -32,7 +32,7 @@ interface HeaderProps {
 
 export function Header({ addMessage }: HeaderProps) {
   return (
-    <header className="flex items-center justify-between rounded-lg border-b bg-card p-3">
+    <header className="flex items-center justify-between bg-card p-3">
       <div className="flex items-center gap-4">
         <Avatar>
           <AvatarImage src="/pdp.jpg" alt="Abderrahmane Gourragui" />

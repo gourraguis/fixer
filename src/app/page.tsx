@@ -9,11 +9,15 @@ export default function Home() {
   const { messages, addMessage, isLoading } = useMessages();
 
   return (
-    <main className="flex h-screen flex-col items-center bg-background p-4">
-      <div className="flex h-full w-full max-w-2xl flex-col gap-4">
+    <main className="flex h-screen flex-col bg-background">
+      <div className="flex h-full w-full flex-col">
         <Header addMessage={addMessage} />
-        <MessageList messages={messages} isLoading={isLoading} className="flex-1" />
-        <ChatInput addMessage={addMessage} isLoading={isLoading} />
+        <MessageList
+          messages={messages}
+          isLoading={isLoading}
+          className="flex-1 bg-zinc-100 p-4 dark:bg-zinc-900"
+        />
+        <ChatInput addMessage={addMessage} isLoading={isLoading} className="p-3" />
       </div>
     </main>
   );
