@@ -45,7 +45,7 @@ export async function POST(request: Request) {
       ],
     });
 
-    const reply = result.text();
+    const reply = result.text;
     return NextResponse.json({ reply });
   } catch (error) {
     console.error('Gemini API call failed:', error);
