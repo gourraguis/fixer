@@ -35,9 +35,9 @@ export async function POST(request: Request) {
 
   try {
     const genAI = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
-    const result = await model.generateContent({
+    const result = await genAI.models.generateContent({
+      model: 'gemini-2.5-flash',
       contents: [
         { role: 'user', parts: [{ text: SYSTEM_PROMPT }] },
         { role: 'model', parts: [{ text: "Ok, I'm ready." }] },
@@ -45,7 +45,7 @@ export async function POST(request: Request) {
       ],
     });
 
-    const reply = result.response.text();
+    const reply = result.text();
     return NextResponse.json({ reply });
   } catch (error) {
     console.error('Gemini API call failed:', error);
