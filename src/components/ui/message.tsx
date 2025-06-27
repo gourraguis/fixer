@@ -20,7 +20,7 @@ const Message = React.forwardRef<HTMLDivElement, MessageProps>(
         <div
           ref={ref}
           className={cn(
-            'max-w-xs rounded-lg p-2',
+            'max-w-xs rounded-lg p-2 break-words',
             {
               'bg-primary text-primary-foreground': variant === 'sent',
               'bg-muted text-muted-foreground': variant === 'received',
