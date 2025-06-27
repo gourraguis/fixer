@@ -5,15 +5,15 @@
 **Technical Requirements:**
 - Modify the `useMessages` hook in `src/hooks/use-messages.ts`.
 - When a 'sent' message is added via `addMessage`, the hook should trigger an asynchronous API call to the `/api/chat` endpoint.
-- The API call should be a POST request. The body should be a JSON object containing the user's message text, for example: `{ "message": "user's text" }`.
-- Upon receiving a successful response from the API, a new 'received' message with the response text should be added to the message list.
-- The hook should manage a loading state (e.g., `isLoading`) that is `true` while waiting for the API response and `false` otherwise. This state should be exposed by the hook.
-- Handle potential API errors gracefully (e.g., log the error to the console, and ensure the loading state is reset).
+- The API call should be a POST request with a JSON body: `{ "message": "user's text" }`.
+- The hook should expose a loading state (`isLoading`) that is `true` while waiting for the API response and `false` otherwise.
+- On a successful API response (which contains `{ "reply": "response text" }`), add the `reply` as a new 'received' message.
+- On an API failure, add a 'received' message with the text: "Whoops! My AI assistant must be on a coffee break, or I've forgotten to pay the cloud bill again. Please reach out to me on email or LinkedIn instead."
 
 **Acceptance Criteria:**
-- GIVEN a user sends a message, WHEN the message is added to the list, THEN the `isLoading` state from the hook becomes `true`.
-- GIVEN the API call is in progress, WHEN the API returns a successful response, THEN a new 'received' message with the response content is added to the list, and `isLoading` becomes `false`.
-- GIVEN the API call fails, WHEN the error is caught, THEN the error is logged to the console, and `isLoading` becomes `false`.
+- GIVEN a 'sent' message is added, WHEN the API call starts, THEN `isLoading` becomes `true`.
+- GIVEN the API call succeeds, WHEN the response is received, THEN a new 'received' message is added and `isLoading` becomes `false`.
+- GIVEN the API call fails, WHEN the error is caught, THEN a 'received' error message is added and `isLoading` becomes `false`.
 
-**Story Points:** 8
-**Justification:** This task adds significant complexity, including asynchronous logic, API integration (`/api/chat`), state management for loading/error states, and potential side effects. It requires careful handling of the request/response cycle.
+**Story Points:** 5
+**Justification:** This task involves adding asynchronous logic, API integration, and state management for loading/error states within the hook. It's a moderately complex task.

@@ -7,7 +7,7 @@
 - The hook should be named `useMessages`.
 - It should manage an array of messages. Each message object should conform to a `Message` type with properties like `id` (string, unique), `text` (string), and `variant` ('sent' | 'received').
 - The hook should expose the current list of messages.
-- The hook should expose a function `addMessage(message: Omit<Message, 'id'>)` to add a new message to the list. This function should handle generating a unique ID.
+- The hook should expose a function `addMessage(message: Omit<Message, 'id'>)` to add a new message to the list. This function should generate a unique ID for each new message using the `uuid` library.
 - Initialize the hook with a default welcome message: `{ text: "Hello! How can I help you today?", variant: "received" }`.
 
 **Acceptance Criteria:**
