@@ -15,6 +15,26 @@ As a visitor, I want to interact with a chatbot that can answer questions about 
 *   The API endpoint must continue to accept a JSON request with a `message` field (string) and return a JSON response with a `reply` field (string).
 *   Implement robust error handling for the Gemini API integration. This should include handling network issues, authentication failures (e.g., invalid API key), and other potential API errors, returning appropriate HTTP status codes and error messages.
 
+**Implementation Guidance:**
+*   Use the `@google/genai` npm package (already installed) to interact with the Gemini API. See the [official GitHub repository](https://github.com/googleapis/js-genai) for full documentation.
+*   **Initialization:**
+    ```typescript
+    import { GoogleGenAI } from '@google/genai';
+    const genAI = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+    ```
+*   **Generating Content with System Prompt:** Use `generateContent` with a `contents` array to provide conversation history. The system prompt should be the first message.
+    ```typescript
+    const result = await genAI.models.generateContent({
+        model: "gemini-2.5-flash",
+        contents: [
+            { role: "user", parts: [{ text: "SYSTEM PROMPT HERE" }] },
+            { role: "model", parts: [{ text: "Ok, I'm ready." }] },
+            { role: "user", parts: [{ text: body.message }] }
+        ],
+    });
+    const reply = result.response.text();
+    ```
+
 **Acceptance Criteria:**
 *   **Given** a user sends a POST request with a valid JSON body `{ "message": "Hello" }` to the `/api/chat` endpoint.
 *   **When** the endpoint processes the request.
