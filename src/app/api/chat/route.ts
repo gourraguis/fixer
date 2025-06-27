@@ -18,5 +18,8 @@ export async function POST(request: Request) {
     );
   }
 
+  // Add a 2-second delay for testing
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+
   return NextResponse.json({ reply: body.message });
 }
