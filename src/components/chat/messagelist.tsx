@@ -24,13 +24,18 @@ const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
         className={cn('flex flex-col space-y-4 overflow-y-auto pb-4', className)}
         {...props}
       >
-        {messages.map((message, index) => (
-          <Message
-            key={index}
-            variant={message.variant}
-            text={message.text}
-          />
-        ))}
+        {messages.flatMap((message, messageIndex) =>
+          message.text
+            .split('\n\n')
+            .filter((paragraph) => paragraph.trim() !== '')
+            .map((paragraph, paragraphIndex) => (
+              <Message
+                key={`${messageIndex}-${paragraphIndex}`}
+                variant={message.variant}
+                text={paragraph}
+              />
+            )),
+        )}
         {isLoading && <TypingIndicator />}
         <div ref={messagesEndRef} />
       </div>
