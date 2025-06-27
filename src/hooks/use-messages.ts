@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { type Message } from '@/types';
+import { INITIAL_MESSAGES } from '@/constants/messages';
 
 export const useMessages = () => {
-  const [messages, setMessages] = useState<Message[]>([
-    {
+  const [messages, setMessages] = useState<Message[]>(() =>
+    INITIAL_MESSAGES.map((message) => ({
+      ...message,
       id: uuidv4(),
-      text: 'Hello! How can I help you today?',
-      variant: 'received',
-    },
-  ]);
+    })),
+  );
   const [isLoading, setIsLoading] = useState(false);
 
   const addMessage = async (message: Omit<Message, 'id'>) => {
