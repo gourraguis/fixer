@@ -27,3 +27,18 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - **Language:** [TypeScript](https://www.typescriptlang.org/)
 - **AI:** [Google Gemini](https://ai.google.dev/)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/) & [shadcn/ui](https://ui.shadcn.com/)
+
+## Using This for Your Own Portfolio
+
+Feel free to use this project for your own personal portfolio. To adapt it, you'll need to:
+
+-   **Update the system prompt:** Change the LLM system prompt to contain your own professional experience and define the AI's personality.
+-   **Change the color scheme:** Modify the Tailwind CSS theme to match your preferences.
+
+## License
+
+This project is open source.
+
+## Credits
+
+This project was created by Abderrahmane Gourragui.
