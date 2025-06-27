@@ -47,35 +47,45 @@ export function Header({ addMessage }: HeaderProps) {
               <Menu className="h-6 w-6" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-48">
-          <DropdownMenuItem
-            onClick={() =>
-              addMessage({
-                text: 'Tell me about your projects.',
-                variant: 'sent',
-              })
-            }
+          <DropdownMenuContent
+            align="end"
+            className="w-48 border-0 bg-primary text-primary-foreground"
           >
-            <Briefcase className="mr-2 h-4 w-4" />
-            <span>View Projects</span>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <a href="/gourragui_cv.pdf" download>
-              <Download className="mr-2 h-4 w-4" />
-              <span>Download Resume</span>
-            </a>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <a
-              href="https://github.com/gourraguis"
-              target="_blank"
-              rel="noopener noreferrer"
+            <DropdownMenuItem
+              className="focus:bg-primary-foreground/10"
+              onClick={() =>
+                addMessage({
+                  text: 'Tell me about your projects.',
+                  variant: 'sent',
+                })
+              }
             >
-              <Code className="mr-2 h-4 w-4" />
-              <span>Source Code</span>
-            </a>
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
+              <Briefcase className="mr-2 h-4 w-4" />
+              <span>View Projects</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              asChild
+              className="focus:bg-primary-foreground/10"
+            >
+              <a href="/gourragui_cv.pdf" download>
+                <Download className="mr-2 h-4 w-4" />
+                <span>Download Resume</span>
+              </a>
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              asChild
+              className="focus:bg-primary-foreground/10"
+            >
+              <a
+                href="https://github.com/gourraguis"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Code className="mr-2 h-4 w-4" />
+                <span>Source Code</span>
+              </a>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator className="bg-primary-foreground/20" />
           <DropdownMenuLabel className="px-2 py-1.5 text-sm font-semibold">
             Connect
           </DropdownMenuLabel>
