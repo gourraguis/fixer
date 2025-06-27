@@ -1,4 +1,5 @@
 import { GeminiClient } from '@/utils/gemini-client';
+import { Message } from '@/types/message';
 
 export class ChatService {
   private readonly geminiClient: GeminiClient;
@@ -7,9 +8,7 @@ export class ChatService {
     this.geminiClient = new GeminiClient();
   }
 
-  async generateReply(message: string): Promise<string> {
-    return this.geminiClient.generateContent([
-      { id: '', text: message, role: 'user' },
-    ]);
+  async generateReply(messages: Message[]): Promise<string> {
+    return this.geminiClient.generateContent(messages);
   }
 }

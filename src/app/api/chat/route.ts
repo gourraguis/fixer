@@ -12,16 +12,19 @@ export async function POST(request: Request) {
     );
   }
 
-  if (!body.message || typeof body.message !== 'string') {
+  if (!body.messages || !Array.isArray(body.messages)) {
     return NextResponse.json(
-      { error: 'Request body must be a JSON object with a "message" key' },
+      {
+        error:
+          'Request body must be a JSON object with a "messages" key of type Array',
+      },
       { status: 400 },
     );
   }
 
   try {
     const chatService = new ChatService();
-    const reply = await chatService.generateReply(body.message);
+    const reply = await chatService.generateReply(body.messages);
     return NextResponse.json({ reply });
   } catch (error: any) {
     if (error.message.includes('GEMINI_API_KEY is not set')) {

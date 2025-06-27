@@ -34,7 +34,9 @@ export const useChatStore = create<ChatState>((set, get) => ({
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ message: message.text }),
+          body: JSON.stringify({
+            messages: get().messages,
+          }),
         });
 
         if (!response.ok) {
