@@ -26,6 +26,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - **Framework:** [Next.js](https://nextjs.org/)
 - **Language:** [TypeScript](https://www.typescriptlang.org/)
 - **AI:** [Google Gemini](https://ai.google.dev/)
+- **AI Pair Programmer:** [Aider](https://aider.chat/)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/) & [shadcn/ui](https://ui.shadcn.com/)
 
 ## Using This for Your Own Portfolio
@@ -41,4 +42,4 @@ This project is open source.
 
 ## Credits
 
-This project was created by Abderrahmane Gourragui.
+This project was created by [Abderrahmane Gourragui](https://gourragui.com/).
