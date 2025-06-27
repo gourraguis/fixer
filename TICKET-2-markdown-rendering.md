@@ -7,8 +7,7 @@ As a user, I want to see formatted text, such as lists and bolding, within chat 
 1.  Add a new dependency for rendering markdown in React (e.g., `react-markdown`).
 2.  Update the `Message` component (`src/components/chat/message.tsx`) to process its `text` prop.
 3.  Use the installed library to render the markdown `text` content as HTML.
-4.  Ensure that the default styling of the message bubbles is not negatively affected.
-5.  The solution should correctly render common markdown syntax, including lists, bold/italic text, and line breaks.
+4.  The solution should correctly render common markdown syntax, including lists, bold/italic text, and line breaks.
 
 **Acceptance Criteria:**
 - **Given** a message's text content includes markdown for an unordered list (e.g., `- First item\n- Second item`).
