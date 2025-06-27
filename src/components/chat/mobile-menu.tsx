@@ -41,7 +41,7 @@ export function MobileMenu({ addMessage }: MobileMenuProps) {
     {
       Icon: Code,
       label: 'Source Code',
-      href: 'https://github.com/gourraguis',
+      href: 'https://github.com/gourraguis/fixer',
       target: '_blank',
       rel: 'noopener noreferrer',
     },
@@ -75,7 +75,7 @@ export function MobileMenu({ addMessage }: MobileMenuProps) {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="end"
-        className="w-48 border-0 bg-primary text-primary-foreground [&_svg]:stroke-primary-foreground"
+        className="w-56 border-0 bg-primary text-primary-foreground [&_svg]:stroke-primary-foreground"
       >
         {menuItems.map(
           ({ Icon, label, href, download, target, rel, onClick }, index) =>
@@ -104,7 +104,7 @@ export function MobileMenu({ addMessage }: MobileMenuProps) {
         <DropdownMenuSeparator className="bg-primary-foreground/20" />
         <DropdownMenuLabel>
           <p className="text-center text-sm font-semibold">Connect</p>
-          <div className="mt-1 flex items-center justify-center gap-x-4">
+          <div className="mt-2 flex items-center justify-center gap-x-6">
             {socialLinks.map(({ Icon, ...linkProps }, index) => (
               <a
                 key={index}
