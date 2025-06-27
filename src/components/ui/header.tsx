@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 
 export function Header() {
   return (
-    <header className="flex items-center justify-between border-b pb-4">
+    <header className="flex items-center justify-between pb-4">
       <div className="flex items-center gap-4">
         <Avatar>
           <AvatarImage src="/pdp.jpg" alt="Abderrahmane Gourragui" />
