@@ -49,7 +49,7 @@ export function Header({ addMessage }: HeaderProps) {
           </DropdownMenuTrigger>
           <DropdownMenuContent
             align="end"
-            className="w-48 border-0 bg-primary text-primary-foreground"
+            className="w-48 border-0 bg-primary text-primary-foreground [&_svg]:text-primary-foreground"
           >
             <DropdownMenuItem
               className="focus:bg-primary-foreground/10"
@@ -86,51 +86,51 @@ export function Header({ addMessage }: HeaderProps) {
               </a>
             </DropdownMenuItem>
             <DropdownMenuSeparator className="bg-primary-foreground/20" />
-          <DropdownMenuLabel className="px-2 py-1.5 text-sm font-semibold">
-            Connect
-          </DropdownMenuLabel>
-          <div className="flex items-center justify-center gap-x-4 px-2 py-1">
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <a
-                  href="https://github.com/gourraguis"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2"
-                >
-                  <Github className="h-5 w-5" />
-                </a>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>GitHub</p>
-              </TooltipContent>
-            </Tooltip>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <a
-                  href="https://www.linkedin.com/in/gourraguis/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2"
-                >
-                  <Linkedin className="h-5 w-5" />
-                </a>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>LinkedIn</p>
-              </TooltipContent>
-            </Tooltip>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <a href="mailto:work@gourragui.com" className="p-2">
-                  <Mail className="h-5 w-5" />
-                </a>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Email</p>
-              </TooltipContent>
-            </Tooltip>
-          </div>
+            <div>
+              <p className="text-center text-sm font-semibold">Connect</p>
+              <div className="flex items-center justify-center gap-x-4 px-2 py-1.5">
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <a
+                      href="https://github.com/gourraguis"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2"
+                    >
+                      <Github className="h-5 w-5" />
+                    </a>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>GitHub</p>
+                  </TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <a
+                      href="https://www.linkedin.com/in/gourraguis/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2"
+                    >
+                      <Linkedin className="h-5 w-5" />
+                    </a>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>LinkedIn</p>
+                  </TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <a href="mailto:work@gourragui.com" className="p-2">
+                      <Mail className="h-5 w-5" />
+                    </a>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Email</p>
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+            </div>
         </DropdownMenuContent>
       </DropdownMenu>
     </TooltipProvider>
