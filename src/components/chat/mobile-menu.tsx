@@ -17,6 +17,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { useUiStore } from '@/stores/ui-store';
 import { Message } from '@/types';
 
 interface MobileMenuProps {
@@ -24,6 +25,8 @@ interface MobileMenuProps {
 }
 
 export function MobileMenu({ addMessage }: MobileMenuProps) {
+  const { isMenuOpen, toggleMenu } = useUiStore();
+
   const menuItems = [
     {
       Icon: Download,
@@ -67,7 +70,7 @@ export function MobileMenu({ addMessage }: MobileMenuProps) {
   ];
 
   return (
-    <DropdownMenu>
+    <DropdownMenu open={isMenuOpen} onOpenChange={toggleMenu}>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon">
           <Menu className="h-6 w-6" />
@@ -75,7 +78,7 @@ export function MobileMenu({ addMessage }: MobileMenuProps) {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="end"
-        className="w-56 border-0 bg-primary text-primary-foreground [&_svg]:stroke-primary-foreground"
+        className="z-50 w-56 border-0 bg-primary text-primary-foreground [&_svg]:stroke-primary-foreground"
       >
         {menuItems.map(
           ({ Icon, label, href, download, target, rel, onClick }, index) =>
