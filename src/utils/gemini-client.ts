@@ -1,5 +1,6 @@
 import { GoogleGenAI } from '@google/genai';
 import { SYSTEM_PROMPT } from '@/constants/prompts';
+import { Message } from '@/types/message';
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
@@ -12,14 +13,18 @@ const genAI = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
 export class GeminiClient {
   private readonly model: string = 'gemini-2.5-flash';
 
-  async generateContent(message: string): Promise<string> {
+  async generateContent(messages: Message[]): Promise<string> {
     try {
+      const history = messages.map((msg) => ({
+        role: msg.role,
+        parts: [{ text: msg.text }],
+      }));
       const result = await genAI.models.generateContent({
         model: this.model,
         contents: [
           { role: 'user', parts: [{ text: SYSTEM_PROMPT }] },
           { role: 'model', parts: [{ text: "Ok, I'm ready." }] },
-          { role: 'user', parts: [{ text: message }] },
+          ...history,
         ],
       });
       return result.text || '';

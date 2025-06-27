@@ -8,6 +8,8 @@ export class ChatService {
   }
 
   async generateReply(message: string): Promise<string> {
-    return this.geminiClient.generateContent(message);
+    return this.geminiClient.generateContent([
+      { id: '', text: message, role: 'user' },
+    ]);
   }
 }
