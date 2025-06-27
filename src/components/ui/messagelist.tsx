@@ -15,7 +15,7 @@ const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
     return (
       <div
         ref={ref}
-        className={cn('flex flex-col space-y-4', className)}
+        className={cn('flex flex-col space-y-4 overflow-y-auto pb-4', className)}
         {...props}
       >
         {messages.map((message, index) => (
