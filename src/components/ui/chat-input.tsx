@@ -31,19 +31,21 @@ const ChatInput = React.forwardRef<HTMLFormElement, ChatInputProps>(
         {...props}
         ref={ref}
         onSubmit={handleSubmit}
-        className={cn(
-          'flex w-full items-center space-x-2 rounded-lg shadow-lg',
-          className,
-        )}
+        className={cn('flex w-full items-center space-x-2', className)}
       >
         <Input
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type a message..."
-          className="flex-1"
+          className="flex-1 shadow-lg"
           disabled={isLoading}
         />
-        <Button type="submit" size="icon" disabled={isInputEmpty || isLoading}>
+        <Button
+          type="submit"
+          size="icon"
+          disabled={isInputEmpty || isLoading}
+          className="shadow-lg"
+        >
           <Send className="h-4 w-4" />
           <span className="sr-only">Send</span>
         </Button>
