@@ -49,7 +49,7 @@ export function Header({ addMessage }: HeaderProps) {
           </DropdownMenuTrigger>
           <DropdownMenuContent
             align="end"
-            className="w-48 border-0 bg-primary text-primary-foreground [&_svg]:text-primary-foreground"
+            className="w-48 border-0 bg-primary text-primary-foreground [&_svg]:stroke-primary-foreground"
           >
             <DropdownMenuItem
               className="focus:bg-primary-foreground/10"
@@ -86,9 +86,9 @@ export function Header({ addMessage }: HeaderProps) {
               </a>
             </DropdownMenuItem>
             <DropdownMenuSeparator className="bg-primary-foreground/20" />
-            <div>
+            <DropdownMenuLabel>
               <p className="text-center text-sm font-semibold">Connect</p>
-              <div className="flex items-center justify-center gap-x-4 px-2 py-1.5">
+              <div className="mt-1 flex items-center justify-center gap-x-4">
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <a
@@ -130,7 +130,7 @@ export function Header({ addMessage }: HeaderProps) {
                   </TooltipContent>
                 </Tooltip>
               </div>
-            </div>
+            </DropdownMenuLabel>
         </DropdownMenuContent>
       </DropdownMenu>
     </TooltipProvider>
