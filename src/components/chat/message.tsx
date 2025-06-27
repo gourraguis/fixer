@@ -21,7 +21,7 @@ const Message = React.forwardRef<HTMLDivElement, MessageProps>(
         <div
           ref={ref}
           className={cn(
-            'prose max-w-xs rounded-lg p-3 shadow-md break-words',
+            'prose max-w-2xl lg:max-w-4xl rounded-lg p-3 shadow-md break-words',
             {
               'bg-primary text-primary-foreground': variant === 'sent',
               'bg-muted text-muted-foreground': variant === 'received',
