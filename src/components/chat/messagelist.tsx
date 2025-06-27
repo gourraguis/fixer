@@ -12,6 +12,12 @@ export interface MessageListProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
   ({ className, messages, isLoading, ...props }, ref) => {
+    const messagesEndRef = React.useRef<HTMLDivElement>(null);
+
+    React.useEffect(() => {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, [messages]);
+
     return (
       <div
         ref={ref}
@@ -26,6 +32,7 @@ const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
           />
         ))}
         {isLoading && <TypingIndicator />}
+        <div ref={messagesEndRef} />
       </div>
     );
   },
