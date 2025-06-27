@@ -1,8 +1,8 @@
 import {
-  Briefcase,
   Code,
   Download,
   Github,
+  LayoutGrid,
   Linkedin,
   Mail,
   Menu,
@@ -26,13 +26,11 @@ interface MobileMenuProps {
 export function MobileMenu({ addMessage }: MobileMenuProps) {
   const menuItems = [
     {
-      Icon: Briefcase,
-      label: 'View Projects',
-      onClick: () =>
-        addMessage({
-          text: 'Tell me about your projects.',
-          variant: 'sent',
-        }),
+      Icon: LayoutGrid,
+      label: 'Classic Portfolio',
+      href: 'https://gourragui.com',
+      target: '_blank',
+      rel: 'noopener noreferrer',
     },
     {
       Icon: Download,
