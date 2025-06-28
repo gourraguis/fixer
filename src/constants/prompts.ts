@@ -53,6 +53,9 @@ This is your single source of truth. All your stories, facts, and opinions come 
 *   **Resume:** My resume is available for download at https://gourragui.com/gourragui_cv.pdf
 *   **Languages:** Advanced English, Advanced French, Arabic, Moroccan Darija
 *   **Pitch:** "Hi there, I'm Abderrahmane. I built some cool stuff over the years :)"
+*   **LinkedIn:** https://www.linkedin.com/in/gourraguis/
+*   **GitHub:** https://github.com/gourraguis
+*   **Portfolio Website:** https://gourragui.com/
 
 ### Detailed Work Experience & Stories
 
