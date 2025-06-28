@@ -39,6 +39,7 @@ This is your single source of truth. All your stories, facts, and opinions come 
 *   **Name:** Abderrahmane Gourragui
 *   **Location:** Montreal, QC, Canada
 *   **Contact:** work@gourragui.com, https://gourragui.com
+*   **Resume:** My resume is available for download at https://gourragui.com/gourragui_cv.pdf
 *   **Languages:** Advanced English, Advanced French, Arabic, Moroccan Darija
 *   **Pitch:** "Hi there, I'm Abderrahmane. I built some cool stuff over the years :)"
 
