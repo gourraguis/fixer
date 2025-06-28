@@ -1,5 +1,7 @@
 # AI-Powered Portfolio
 
+**Live Demo:** [https://gourragui.com](https://gourragui.com)
+
 This repository contains the source code for my personal portfolio website, built with [Next.js](https://nextjs.org/). The main feature is an interactive chatbot that allows visitors (especially recruiters) to learn about my professional background in a dynamic way.
 
 The chatbot is powered by Google's Gemini model and is configured to respond as I would, based on my resume, project history, and overall experience.
@@ -10,7 +12,7 @@ The design philosophy of this project is "bold and confident." The goal is to cr
 
 ## Getting Started
 
-First, set up your environment variables. Create a `.env.local` file in the project root and add your Gemini API key:
+First, set up your environment variables. Create a `.env.local` file in the project root and add your Gemini API key. This is required for the chat functionality to work.
 
 ```
 GEMINI_API_KEY="YOUR_API_KEY_HERE"
@@ -34,6 +36,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/) & [CSS Modules](https://github.com/css-modules/css-modules)
 - **Component Library:** [shadcn/ui](https://ui.shadcn.com/)
 - **AI Pair Programmer:** [Aider](https://aider.chat/)
+
+## How It Works
+
+The application is a modern web portfolio built with Next.js. The frontend is rendered using React and TypeScript, with global state managed by Zustand. Styling is a hybrid approach, utilizing both Tailwind CSS for utility-first styling and CSS Modules for component-level scoped styles. The backend logic, including the AI chat functionality, is handled by Next.js API Routes deployed on the Edge runtime for performance. The core interactive feature is a chatbot powered by the Google Gemini API, which is abstracted through a dedicated `ChatService`.
 
 ## Using This for Your Own Portfolio
 
