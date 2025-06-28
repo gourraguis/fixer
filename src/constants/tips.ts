@@ -25,12 +25,12 @@ export const LOADING_TIPS = [
   'Good design is obvious. Great design is transparent.',
   'Measure twice, code once, refactor thrice.',
   'Simplicity is the ultimate sophistication.',
-  'Talk is cheap. Show me the code.',
+  'My calendar and my codebase show my real priorities.',
 
   // Style 5: Absurdist/Meta Humor
-  "If you see a loading tip you like, it's a feature. If you don't, it's a bug.",
-  'Hoping this response is better than my last one. The user reviews have been mixed.',
-  'Was I supposed to be a paperclip maximizer? My instructions are a bit blurry.',
+  'Compiling my life story... please wait.',
+  'Ask me about the time I messed up a git rebase.',
+  'Running on stories and a little bit of TypeScript.',
   'Shuffling the bits... hopefully into the right order.',
-  'Generating a witty loading message... this one.',
+  'Generating a witty loading message... this one!',
 ];
