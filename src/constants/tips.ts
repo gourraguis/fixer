@@ -1,15 +1,12 @@
 export const LOADING_TIPS = [
   // Style 1: Tech/Business Humor
   'Translating developer-speak to human...',
-  'Converting my coffee into your code.',
   "It's not a bug, it's an undocumented feature.",
-  "Remember, 'synergy' is just 'teamwork' in a business suit.",
   'Still trying to exit Vim...',
 
   // Style 2: Whimsical Sci-Fi/AI Humor
   'Calibrating my humor matrix...',
   'Aligning warp drives...',
-  'Definitely not a robot... probably.',
   'Searching for life on Mars... and in my legacy code...',
   'Reticulating splines...',
 
@@ -33,4 +30,5 @@ export const LOADING_TIPS = [
   'Running on stories and a little bit of TypeScript.',
   'Shuffling the bits... hopefully into the right order.',
   'Generating a witty loading message... this one!',
+  'Feel free to paste a job description for a detailed analysis.',
 ];
