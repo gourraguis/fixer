@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gourragui.com/sitemap.xml
