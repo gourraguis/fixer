@@ -17,15 +17,43 @@
   }
 }
 
-.userMessage {
-  border: 1px solid rgba(59, 130, 246, 0.5);
-  box-shadow: 0 0 15px rgba(59, 130, 246, 0.1);
-}
-
 .modelMessage {
   border: 1px solid rgba(0, 122, 255, 0.7);
-  box-shadow:
-    0 0 15px rgba(0, 122, 255, 0.2),
-    0 0 30px rgba(0, 122, 255, 0.15),
-    inset 0 0 10px rgba(0, 122, 255, 0.1);
+}
+
+.userMessage {
+  position: relative;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  z-index: 1;
+}
+
+.userMessage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -1px; /* Adjust to border width */
+  border-radius: inherit; /* Match parent's border-radius */
+  background: linear-gradient(
+    to right,
+    rgba(0, 122, 255, 0.9),
+    rgba(0, 255, 255, 0.7)
+  );
+  animation: rotateGradient 5s ease-in-out infinite;
+}
+
+@keyframes rotateGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
