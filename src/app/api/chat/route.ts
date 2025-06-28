@@ -26,6 +26,8 @@ export async function POST(request: Request) {
 
   try {
     const chatService = new ChatService();
+    console.log('lalalalala')
+    console.log(body)
     const reply = await chatService.generateReply(body.messages);
     return NextResponse.json({ reply });
   } catch (error: any) {
