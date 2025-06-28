@@ -35,7 +35,7 @@ export function MobileMenu() {
     {
       Icon: LayoutGrid,
       label: 'Classic Portfolio',
-      href: 'https://gourragui.com',
+      href: 'https://classic.gourragui.com',
       target: '_blank',
       rel: 'noopener noreferrer',
     },
