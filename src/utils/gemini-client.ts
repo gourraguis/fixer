@@ -1,5 +1,5 @@
 import { GoogleGenAI } from '@google/genai';
-import { SYSTEM_PROMPT } from '@/constants/prompts';
+import { SUGGESTION_PROMPT, SYSTEM_PROMPT } from '@/constants/prompts';
 import { Message } from '@/types/message';
 import { Suggestion } from '@/types/suggestion';
 
@@ -36,14 +36,31 @@ export class GeminiClient {
   }
 
   async getSuggestions(messages: Message[]): Promise<Suggestion[]> {
-    // Placeholder implementation
-    console.log(
-      'Placeholder: Simulating suggestion generation for messages:',
-      messages,
-    );
-    return Promise.resolve([
-      { emoji: '🤔', title: 'How to improve?', prompt: 'How can I improve?' },
-      { emoji: '👀', title: 'Show me more', prompt: 'Show me another project.' },
-    ]);
+    try {
+      const history = messages.map((msg) => ({
+        role: msg.role,
+        parts: [{ text: msg.text }],
+      }));
+
+      const result = await genAI.models.generateContent({
+        model: this.model,
+        contents: [
+          ...history,
+          { role: 'user', parts: [{ text: SUGGESTION_PROMPT }] },
+        ],
+        config: {
+          responseMimeType: 'application/json',
+        },
+      });
+
+      const text = result.text;
+      if (text) {
+        return JSON.parse(text);
+      }
+      return [];
+    } catch (error) {
+      console.error('Suggestion generation failed:', error);
+      return [];
+    }
   }
 }
