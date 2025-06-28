@@ -1,0 +1,35 @@
+.suggestions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  padding: 16px;
+  flex-wrap: wrap;
+  z-index: 10;
+}
+
+.suggestionCard {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.suggestionCard:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.emoji {
+  font-size: 16px;
+}
+
+.title {
+  font-weight: 500;
+}

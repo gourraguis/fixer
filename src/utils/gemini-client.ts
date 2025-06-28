@@ -1,6 +1,7 @@
 import { GoogleGenAI } from '@google/genai';
 import { SYSTEM_PROMPT } from '@/constants/prompts';
 import { Message } from '@/types/message';
+import { Suggestion } from '@/types/suggestion';
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
@@ -32,5 +33,17 @@ export class GeminiClient {
       console.error('Gemini API call failed:', error);
       throw new Error('Bad Gateway: Failed to get response from AI service');
     }
+  }
+
+  async getSuggestions(messages: Message[]): Promise<Suggestion[]> {
+    // Placeholder implementation
+    console.log(
+      'Placeholder: Simulating suggestion generation for messages:',
+      messages,
+    );
+    return Promise.resolve([
+      { emoji: '🤔', title: 'How to improve?', prompt: 'How can I improve?' },
+      { emoji: '👀', title: 'Show me more', prompt: 'Show me another project.' },
+    ]);
   }
 }

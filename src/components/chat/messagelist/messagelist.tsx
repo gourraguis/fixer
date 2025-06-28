@@ -10,11 +10,11 @@ export interface MessageListProps extends React.HTMLAttributes<HTMLDivElement> {
 const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
   ({ className, ...props }, ref) => {
     const messagesEndRef = React.useRef<HTMLDivElement>(null);
-    const { messages, isLoading } = useChatStore();
+    const { messages, isLoading, suggestions } = useChatStore();
 
     React.useEffect(() => {
       messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }, [messages]);
+    }, [messages, isLoading, suggestions]);
 
     return (
       <div
