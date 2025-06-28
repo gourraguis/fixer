@@ -135,10 +135,12 @@ export const useChatStore = create<ChatState>((set, get) => ({
     set({ suggestions });
   },
   reset: () => {
+    const newConversationId = uuidv4();
+    setLocalStorageItem(LocalStorageKeys.CONVERSATION_ID, newConversationId);
     set({
       messages: defaultMessages,
       suggestions: INITIAL_SUGGESTIONS,
-      conversationId: '',
+      conversationId: newConversationId,
     });
   },
 }));
