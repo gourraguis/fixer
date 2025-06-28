@@ -1,3 +1,4 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -44,6 +45,7 @@
 }
 
 :root {
+  --font-heading: 'Satoshi', sans-serif;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.09 0.02 240);
@@ -80,38 +82,38 @@
 }
 
 .dark {
-  --background: oklch(0.09 0.02 240);
-  --foreground: oklch(0.97 0.01 240);
-  --card: oklch(0.12 0.025 240);
-  --card-foreground: oklch(0.97 0.01 240);
-  --popover: oklch(0.12 0.025 240);
-  --popover-foreground: oklch(0.97 0.01 240);
-  --primary: oklch(0.55 0.15 260);
-  --primary-foreground: oklch(0.99 0.01 260);
-  --secondary: oklch(0.2 0.03 240);
-  --secondary-foreground: oklch(0.97 0.01 240);
-  --muted: oklch(0.2 0.03 240);
-  --muted-foreground: oklch(0.6 0.02 240);
-  --accent: oklch(0.2 0.03 240);
-  --accent-foreground: oklch(0.97 0.01 240);
+  --background: #111827;
+  --foreground: #F9FAFB;
+  --card: #1F2937;
+  --card-foreground: #F9FAFB;
+  --popover: #1F2937;
+  --popover-foreground: #F9FAFB;
+  --primary: #3B82F6;
+  --primary-foreground: #F9FAFB;
+  --secondary: #374151;
+  --secondary-foreground: #F9FAFB;
+  --muted: #374151;
+  --muted-foreground: #F9FAFB;
+  --accent: #374151;
+  --accent-foreground: #F9FAFB;
   --destructive: oklch(0.55 0.18 15);
   --destructive-foreground: oklch(0.98 0.01 15);
-  --border: oklch(0.2 0.03 240);
-  --input: oklch(0.2 0.03 240);
-  --ring: oklch(0.55 0.15 260);
+  --border: #374151;
+  --input: #374151;
+  --ring: #3B82F6;
   --chart-1: oklch(0.7 0.15 289);
   --chart-2: oklch(0.6 0.2 270);
   --chart-3: oklch(0.6 0.2 310);
   --chart-4: oklch(0.7 0.2 120);
   --chart-5: oklch(0.8 0.1 289);
-  --sidebar: oklch(0.20 0.03 268);
-  --sidebar-foreground: oklch(0.95 0.01 265);
-  --sidebar-primary: oklch(0.61 0.21 289);
-  --sidebar-primary-foreground: oklch(0.99 0.01 257);
-  --sidebar-accent: oklch(0.40 0.04 272);
-  --sidebar-accent-foreground: oklch(0.98 0.01 272);
-  --sidebar-border: oklch(0.30 0.03 270);
-  --sidebar-ring: oklch(0.61 0.21 289);
+  --sidebar: #111827;
+  --sidebar-foreground: #F9FAFB;
+  --sidebar-primary: #3B82F6;
+  --sidebar-primary-foreground: #F9FAFB;
+  --sidebar-accent: #374151;
+  --sidebar-accent-foreground: #F9FAFB;
+  --sidebar-border: #374151;
+  --sidebar-ring: #3B82F6;
 }
 
 @layer base {
@@ -122,3 +124,5 @@
     @apply bg-background text-foreground;
   }
 }
+
+

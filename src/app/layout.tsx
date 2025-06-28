@@ -1,17 +1,10 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Funnel_Display } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const bricolageGrotesque = Bricolage_Grotesque({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-body",
-  weight: ["400", "700"],
-});
-
-const funnelDisplay = Funnel_Display({
-  subsets: ["latin"],
-  variable: "--font-heading",
-  weight: "700",
+  variable: "--font-sans",
 });
 
 export const metadata: Metadata = {
@@ -25,10 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${bricolageGrotesque.variable} ${funnelDisplay.variable} antialiased`}
-      >
+    <html lang="en" className="dark">
+      <body className={`${inter.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>

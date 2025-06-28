@@ -5,6 +5,7 @@ import { Header } from '@/components/chat/header/header';
 import { MobileMenu } from '@/components/chat/mobile-menu';
 import { MessageList } from '@/components/chat/messagelist/messagelist';
 import { Overlay } from '@/components/ui/overlay';
+import { StarfieldBackground } from '@/components/ui/starfield-background';
 import { useUiStore } from '@/stores/ui-store';
 
 export default function Home() {
@@ -17,9 +18,10 @@ export default function Home() {
         <Header>
           <MobileMenu />
         </Header>
-        <div className="flex flex-1 flex-col bg-zinc-100 dark:bg-zinc-900">
-          <MessageList className="flex-1 p-4" />
-          <ChatInput className="p-3" />
+        <div className="relative flex flex-1 flex-col">
+          <StarfieldBackground />
+          <MessageList className="z-10 flex-1 p-4" />
+          <ChatInput className="z-10 p-3" />
         </div>
       </div>
     </main>
