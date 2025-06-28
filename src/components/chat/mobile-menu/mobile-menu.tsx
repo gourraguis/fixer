@@ -20,6 +20,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useUiStore } from '@/stores/ui-store';
+import styles from './mobile-menu.module.css';
 
 export function MobileMenu() {
   const { isMenuOpen, toggleMenu } = useUiStore();
@@ -69,13 +70,13 @@ export function MobileMenu() {
   return (
     <DropdownMenu open={isMenuOpen} onOpenChange={toggleMenu}>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon">
+        <Button variant="ghost" size="icon" className={styles.menuIcon}>
           <Menu className="h-6 w-6" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="end"
-        className="z-50 w-56 border-0 bg-primary text-primary-foreground [&_svg]:stroke-primary-foreground"
+        className={`${styles.dropdown} z-50 w-56 text-primary-foreground [&_svg]:stroke-primary-foreground`}
       >
         {menuItems.map(
           ({ Icon, label, href, download, target, rel }, index) =>

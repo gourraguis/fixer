@@ -2,7 +2,7 @@
 
 import { ChatInput } from '@/components/chat/chat-input';
 import { Header } from '@/components/chat/header/header';
-import { MobileMenu } from '@/components/chat/mobile-menu';
+import { MobileMenu } from '@/components/chat/mobile-menu/mobile-menu';
 import { MessageList } from '@/components/chat/messagelist/messagelist';
 import { Overlay } from '@/components/ui/overlay';
 import { StarfieldBackground } from '@/components/ui/starfield-background';
