@@ -1,5 +1,5 @@
 .suggestionsContainer {
-  min-height: 68px; /* Reserve space for one row of suggestions */
+  min-height: 80px; /* Reserve space for one row of suggestions */
   display: flex;
   align-items: center;
   justify-content: center;
