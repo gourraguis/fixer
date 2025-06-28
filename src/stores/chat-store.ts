@@ -34,16 +34,13 @@ export const useChatStore = create<ChatState>((set, get) => ({
 
     if (message.role === 'user') {
       set({ isLoading: true });
+
+      // --- Fetch Chat Reply ---
       try {
-        // 1. Get the chat reply
         const chatResponse = await fetch('/api/chat', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            messages: get().messages,
-          }),
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messages: get().messages }),
         });
 
         if (!chatResponse.ok) {
@@ -57,27 +54,9 @@ export const useChatStore = create<ChatState>((set, get) => ({
           role: 'model',
         };
 
-        // 2. Add the reply to the message list
         set((state) => ({
           messages: [...state.messages, replyMessage],
         }));
-
-        // 3. Now, get the suggestions with the full context
-        const suggestionsResponse = await fetch('/api/suggestions', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ messages: get().messages }),
-        });
-
-        if (suggestionsResponse.ok) {
-          const suggestionsData = await suggestionsResponse.json();
-          set({ suggestions: suggestionsData.suggestions || [] });
-        } else {
-          // Non-critical, so we don't throw an error, just log it.
-          console.error('Suggestions API call failed');
-        }
       } catch (error) {
         const errorMessage: Message = {
           id: uuidv4(),
@@ -89,6 +68,25 @@ export const useChatStore = create<ChatState>((set, get) => ({
         }));
       } finally {
         set({ isLoading: false });
+      }
+
+      // --- Fetch Suggestions (Silently) ---
+      try {
+        const suggestionsResponse = await fetch('/api/suggestions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messages: get().messages }),
+        });
+
+        if (suggestionsResponse.ok) {
+          const suggestionsData = await suggestionsResponse.json();
+          set({ suggestions: suggestionsData.suggestions || [] });
+        } else {
+          console.error('Suggestions API call failed');
+        }
+      } catch (error) {
+        console.error('Suggestion fetch failed:', error);
+        // Do not show an error message for suggestions, as it's non-critical.
       }
     }
   },
