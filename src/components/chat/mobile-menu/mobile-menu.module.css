@@ -1,5 +1,13 @@
 .menuIcon {
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.7));
+  transition: all 0.2s ease-in-out;
+  color: #fff;
+}
+
+.menuIcon:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .dropdown {
@@ -16,7 +24,8 @@
 
 .menuItem:hover,
 .menuItem:focus {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 122, 255, 0.2);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .separator {
@@ -24,10 +33,11 @@
 }
 
 .socialLink {
-  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .socialLink:hover {
   transform: scale(1.15);
-  opacity: 1;
+  color: #fff;
 }
