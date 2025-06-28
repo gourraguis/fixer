@@ -11,24 +11,6 @@ import {
   LocalStorageKeys,
 } from '@/utils/local-storage';
 
-const getInitialConversationId = (): string => {
-  const storedId = getLocalStorageItem(LocalStorageKeys.CONVERSATION_ID, '');
-  if (storedId) {
-    return storedId;
-  }
-  const newId = uuidv4();
-  setLocalStorageItem(LocalStorageKeys.CONVERSATION_ID, newId);
-  return newId;
-};
-
-const getInitialMessages = (): Message[] => {
-  const defaultMessages = INITIAL_MESSAGES.map((message) => ({
-    ...message,
-    id: uuidv4(),
-  }));
-  return getLocalStorageItem(LocalStorageKeys.MESSAGES, defaultMessages);
-};
-
 interface ChatState {
   messages: Message[];
   suggestions: Suggestion[];
@@ -36,13 +18,43 @@ interface ChatState {
   conversationId: string;
   addMessage: (message: Omit<Message, 'id'>) => Promise<void>;
   setSuggestions: (suggestions: Suggestion[]) => void;
+  hydrate: () => void;
 }
 
+const defaultMessages = INITIAL_MESSAGES.map((message) => ({
+  ...message,
+  id: uuidv4(),
+}));
+
 export const useChatStore = create<ChatState>((set, get) => ({
-  messages: getInitialMessages(),
+  messages: defaultMessages,
   suggestions: INITIAL_SUGGESTIONS,
   isLoading: false,
-  conversationId: getInitialConversationId(),
+  conversationId: '',
+  hydrate: () => {
+    const storedId = getLocalStorageItem(LocalStorageKeys.CONVERSATION_ID, '');
+    let conversationId = storedId;
+    if (!storedId) {
+      conversationId = uuidv4();
+      setLocalStorageItem(LocalStorageKeys.CONVERSATION_ID, conversationId);
+    }
+
+    const storedMessages = getLocalStorageItem(
+      LocalStorageKeys.MESSAGES,
+      defaultMessages
+    );
+
+    const storedSuggestions = getLocalStorageItem(
+      LocalStorageKeys.SUGGESTIONS,
+      INITIAL_SUGGESTIONS
+    );
+
+    set({
+      conversationId,
+      messages: storedMessages,
+      suggestions: storedSuggestions,
+    });
+  },
   addMessage: async (message) => {
     const newMessage: Message = {
       id: uuidv4(),
@@ -51,6 +63,7 @@ export const useChatStore = create<ChatState>((set, get) => ({
 
     const updatedMessagesWithUser = [...get().messages, newMessage];
     setLocalStorageItem(LocalStorageKeys.MESSAGES, updatedMessagesWithUser);
+    setLocalStorageItem(LocalStorageKeys.SUGGESTIONS, []);
     set({ messages: updatedMessagesWithUser, suggestions: [] });
 
     if (message.role === 'user') {
@@ -104,7 +117,9 @@ export const useChatStore = create<ChatState>((set, get) => ({
 
         if (suggestionsResponse.ok) {
           const suggestionsData = await suggestionsResponse.json();
-          set({ suggestions: suggestionsData.suggestions || [] });
+          const newSuggestions = suggestionsData.suggestions || [];
+          setLocalStorageItem(LocalStorageKeys.SUGGESTIONS, newSuggestions);
+          set({ suggestions: newSuggestions });
         } else {
           console.error('Suggestions API call failed');
         }
@@ -115,6 +130,7 @@ export const useChatStore = create<ChatState>((set, get) => ({
     }
   },
   setSuggestions: (suggestions) => {
+    setLocalStorageItem(LocalStorageKeys.SUGGESTIONS, suggestions);
     set({ suggestions });
   },
 }));
