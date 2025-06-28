@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';
+import styles from './typing-indicator.module.css';
 
 const TypingIndicator = React.forwardRef<
   HTMLDivElement,
@@ -12,12 +13,12 @@ const TypingIndicator = React.forwardRef<
       ref={ref}
       role="status"
       aria-live="polite"
-      className={cn('flex items-center space-x-1', className)}
+      className={cn(styles.typingIndicator, className)}
     >
       <span className="sr-only">AI is typing...</span>
-      <div className="h-2 w-2 animate-pulse rounded-full bg-muted-foreground [animation-delay:-0.3s]" />
-      <div className="h-2 w-2 animate-pulse rounded-full bg-muted-foreground [animation-delay:-0.15s]" />
-      <div className="h-2 w-2 animate-pulse rounded-full bg-muted-foreground" />
+      <div className={styles.bar} />
+      <div className={styles.bar} />
+      <div className={styles.bar} />
     </div>
   );
 });

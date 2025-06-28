@@ -47,7 +47,7 @@ const ChatInput = React.forwardRef<HTMLFormElement, ChatInputProps>(
         onSubmit={handleSubmit}
         className={cn(
           styles.form,
-          'flex w-full items-center space-x-2 rounded-lg p-2',
+          'flex w-full items-center space-x-2 p-2',
           className,
         )}
       >
