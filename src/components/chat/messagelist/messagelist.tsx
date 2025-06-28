@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Message } from '@/components/chat/message/message';
-import { TypingIndicator } from '@/components/chat/typing-indicator';
 import { cn } from '@/lib/utils';
 import { useChatStore } from '@/stores/chat-store';
 import styles from './messagelist.module.css';
@@ -10,11 +9,11 @@ export interface MessageListProps extends React.HTMLAttributes<HTMLDivElement> {
 const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
   ({ className, ...props }, ref) => {
     const messagesEndRef = React.useRef<HTMLDivElement>(null);
-    const { messages, isLoading, suggestions } = useChatStore();
+    const { messages, suggestions } = useChatStore();
 
     React.useEffect(() => {
       messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }, [messages, isLoading, suggestions]);
+    }, [messages, suggestions]);
 
     return (
       <div
@@ -38,7 +37,6 @@ const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
               />
             )),
         )}
-        {isLoading && <TypingIndicator />}
         <div ref={messagesEndRef} />
       </div>
     );

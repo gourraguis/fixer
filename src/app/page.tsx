@@ -2,15 +2,18 @@
 
 import { ChatInput } from '@/components/chat/chat-input/chat-input';
 import { Header } from '@/components/chat/header/header';
-import { MobileMenu } from '@/components/chat/mobile-menu/mobile-menu';
+import { LoadingScanner } from '@/components/chat/loading-scanner/loading-scanner';
 import { MessageList } from '@/components/chat/messagelist/messagelist';
+import { MobileMenu } from '@/components/chat/mobile-menu/mobile-menu';
 import { Suggestions } from '@/components/chat/suggestions/suggestions';
 import { Overlay } from '@/components/ui/overlay';
 import { StarfieldBackground } from '@/components/ui/starfield-background';
+import { useChatStore } from '@/stores/chat-store';
 import { useUiStore } from '@/stores/ui-store';
 
 export default function Home() {
   const { isMenuOpen, closeMenu } = useUiStore();
+  const { isLoading } = useChatStore();
 
   return (
     <main className="flex h-screen flex-col bg-background">
@@ -21,9 +24,15 @@ export default function Home() {
         </Header>
         <div className="relative flex flex-1 flex-col">
           <StarfieldBackground />
-          <MessageList className="z-10 flex-1 p-4" />
+          <div className="z-10 flex-1 overflow-y-auto">
+            <MessageList className="p-4" />
+          </div>
           <Suggestions />
-          <ChatInput className="z-10 p-3" />
+          {isLoading ? (
+            <LoadingScanner className="z-10" />
+          ) : (
+            <ChatInput className="z-10 p-3" />
+          )}
         </div>
       </div>
     </main>
