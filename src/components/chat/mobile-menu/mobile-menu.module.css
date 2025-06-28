@@ -25,7 +25,6 @@
 .menuItem:hover,
 .menuItem:focus {
   background-color: rgba(0, 122, 255, 0.2);
-  color: rgba(255, 255, 255, 0.7);
 }
 
 .separator {
