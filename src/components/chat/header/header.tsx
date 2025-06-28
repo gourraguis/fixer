@@ -4,7 +4,7 @@ import styles from './header.module.css';
 export function Header({ children }: { children: React.ReactNode }) {
   return (
     <header
-      className={`flex items-center justify-between bg-primary p-3 text-primary-foreground ${styles.header}`}
+      className={`flex items-center justify-between p-3 text-primary-foreground ${styles.header}`}
     >
       <div className="flex items-center gap-4">
         <Avatar>
