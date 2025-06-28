@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Message } from '@/components/chat/message';
+import { Message } from '@/components/chat/message/message';
 import { TypingIndicator } from '@/components/chat/typing-indicator';
 import { cn } from '@/lib/utils';
 import { useChatStore } from '@/stores/chat-store';

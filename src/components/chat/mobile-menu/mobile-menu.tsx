@@ -84,7 +84,7 @@ export function MobileMenu() {
               <DropdownMenuItem
                 key={index}
                 asChild
-                className="cursor-pointer focus:bg-primary-foreground/10 focus:text-primary-foreground"
+                className={`cursor-pointer focus:text-primary-foreground ${styles.menuItem}`}
               >
                 <a href={href} download={download} target={target} rel={rel}>
                   <Icon className="mr-2 h-4 w-4" />
@@ -93,7 +93,7 @@ export function MobileMenu() {
               </DropdownMenuItem>
             )
         )}
-        <DropdownMenuSeparator className="bg-primary-foreground/20" />
+        <DropdownMenuSeparator className={styles.separator} />
         <DropdownMenuLabel>
           <p className="text-center text-sm font-semibold">Connect</p>
           <div className="mt-2 flex items-center justify-center gap-x-6">
@@ -101,7 +101,7 @@ export function MobileMenu() {
               <a
                 key={index}
                 {...linkProps}
-                className="p-2 transition-opacity hover:opacity-75"
+                className={`p-2 transition-opacity hover:opacity-75 ${styles.socialLink}`}
               >
                 <Icon className="h-5 w-5" />
               </a>

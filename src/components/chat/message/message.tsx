@@ -2,6 +2,7 @@ import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
 
 import { cn } from '@/lib/utils';
+import styles from './message.module.css';
 
 export interface MessageProps {
   text: string;
@@ -21,10 +22,11 @@ const Message = React.forwardRef<HTMLDivElement, MessageProps>(
         <div
           ref={ref}
           className={cn(
+            styles.message,
             'prose max-w-2xl lg:max-w-4xl rounded-lg p-3 shadow-md break-words',
             {
-              'bg-primary text-primary-foreground': role === 'user',
-              'bg-muted text-muted-foreground': role === 'model',
+              'text-primary-foreground': role === 'user',
+              'text-muted-foreground': role === 'model',
             },
             className,
           )}

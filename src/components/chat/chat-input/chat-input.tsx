@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
 import { useChatStore } from '@/stores/chat-store';
+import styles from './chat-input.module.css';
 
 export interface ChatInputProps extends React.HTMLAttributes<HTMLFormElement> {}
 
@@ -44,7 +45,11 @@ const ChatInput = React.forwardRef<HTMLFormElement, ChatInputProps>(
         {...props}
         ref={ref}
         onSubmit={handleSubmit}
-        className={cn('flex w-full items-center space-x-2', className)}
+        className={cn(
+          styles.form,
+          'flex w-full items-center space-x-2 rounded-lg p-2',
+          className,
+        )}
       >
         <Textarea
           ref={textareaRef}

@@ -9,3 +9,25 @@
   border: 1px solid rgba(59, 130, 246, 0.2); /* semi-transparent primary accent */
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.1); /* faint glow */
 }
+
+.menuItem {
+  transition: background-color 0.2s ease-in-out;
+}
+
+.menuItem:hover,
+.menuItem:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.separator {
+  background-color: rgba(249, 250, 251, 0.3); /* --foreground at 30% opacity */
+}
+
+.socialLink {
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.socialLink:hover {
+  transform: scale(1.15);
+  opacity: 1;
+}

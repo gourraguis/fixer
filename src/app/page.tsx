@@ -1,6 +1,6 @@
 'use client';
 
-import { ChatInput } from '@/components/chat/chat-input';
+import { ChatInput } from '@/components/chat/chat-input/chat-input';
 import { Header } from '@/components/chat/header/header';
 import { MobileMenu } from '@/components/chat/mobile-menu/mobile-menu';
 import { MessageList } from '@/components/chat/messagelist/messagelist';
