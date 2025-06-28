@@ -56,7 +56,7 @@ const ChatInput = React.forwardRef<HTMLFormElement, ChatInputProps>(
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Type a message..."
+          placeholder="Your questions or a JD for a deep dive..."
           className={`flex-1 ${styles.textarea}`}
           disabled={isLoading}
           rows={1}
