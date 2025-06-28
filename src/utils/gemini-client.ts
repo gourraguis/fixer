@@ -12,7 +12,8 @@ if (!GEMINI_API_KEY) {
 const genAI = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
 
 export class GeminiClient {
-  private readonly model: string = 'gemini-2.5-flash';
+  private readonly chatModel: string = 'gemini-2.5-flash';
+  private readonly suggestionModel: string = 'gemini-1.5-flash';
 
   async generateContent(messages: Message[]): Promise<string> {
     try {
@@ -21,7 +22,7 @@ export class GeminiClient {
         parts: [{ text: msg.text }],
       }));
       const result = await genAI.models.generateContent({
-        model: this.model,
+        model: this.chatModel,
         contents: [
           { role: 'user', parts: [{ text: SYSTEM_PROMPT }] },
           { role: 'model', parts: [{ text: "Ok, I'm ready." }] },
@@ -43,7 +44,7 @@ export class GeminiClient {
       }));
 
       const result = await genAI.models.generateContent({
-        model: this.model,
+        model: this.suggestionModel,
         contents: [
           ...history,
           { role: 'user', parts: [{ text: SUGGESTION_PROMPT }] },
