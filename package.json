@@ -22,6 +22,7 @@
     "react-dom": "^19.0.0",
     "react-markdown": "^10.1.0",
     "tailwind-merge": "^3.3.1",
+    "uuid": "^11.1.0",
     "zustand": "^5.0.6"
   },
   "devDependencies": {
@@ -37,7 +38,6 @@
     "npm": "^11.4.2",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.3.4",
-    "typescript": "^5",
-    "uuid": "^11.1.0"
+    "typescript": "^5"
   }
 }
