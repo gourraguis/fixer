@@ -57,7 +57,7 @@ const ChatInput = React.forwardRef<HTMLFormElement, ChatInputProps>(
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Type a message..."
-          className="flex-1 shadow-lg"
+          className={`flex-1 ${styles.textarea}`}
           disabled={isLoading}
           rows={1}
         />
@@ -65,9 +65,9 @@ const ChatInput = React.forwardRef<HTMLFormElement, ChatInputProps>(
           type="submit"
           size="icon"
           disabled={isInputEmpty || isLoading}
-          className="flex-shrink-0 shadow-lg"
+          className={`flex-shrink-0 ${styles.sendButton}`}
         >
-          <Send />
+          <Send className="size-6" />
           <span className="sr-only">Send</span>
         </Button>
       </form>

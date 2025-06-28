@@ -23,11 +23,8 @@ const Message = React.forwardRef<HTMLDivElement, MessageProps>(
           ref={ref}
           className={cn(
             styles.message,
-            'prose max-w-2xl lg:max-w-4xl rounded-lg p-3 shadow-md break-words',
-            {
-              'text-primary-foreground': role === 'user',
-              'text-muted-foreground': role === 'model',
-            },
+            role === 'user' ? styles.userMessage : styles.modelMessage,
+            'prose max-w-2xl lg:max-w-4xl rounded-lg p-3 shadow-md break-words text-primary-foreground',
             className,
           )}
         >

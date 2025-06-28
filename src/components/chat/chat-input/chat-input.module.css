@@ -2,6 +2,34 @@
   background-color: rgba(31, 41, 55, 0.5); /* semi-transparent card color */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px); /* Safari support */
-  border: 1px solid rgba(59, 130, 246, 0.2); /* semi-transparent primary accent */
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.1); /* faint glow */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+.textarea {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  resize: none;
+  color: white;
+  padding: 0;
+}
+
+.textarea:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+
+.sendButton {
+  background-color: transparent;
+  transition: transform 0.2s ease-in-out;
+}
+
+.sendButton:hover {
+  transform: scale(1.1);
+}
+
+.sendButton:disabled {
+  opacity: 0.5;
 }
