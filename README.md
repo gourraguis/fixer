@@ -4,6 +4,10 @@ This repository contains the source code for my personal portfolio website, buil
 
 The chatbot is powered by Google's Gemini model and is configured to respond as I would, based on my resume, project history, and overall experience.
 
+## Design Philosophy
+
+The design philosophy of this project is "bold and confident." The goal is to create a memorable, high-impact user experience that goes beyond a standard portfolio, showcasing a keen eye for design and user interaction.
+
 ## Getting Started
 
 First, set up your environment variables. Create a `.env.local` file in the project root and add your Gemini API key:
@@ -26,8 +30,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - **Framework:** [Next.js](https://nextjs.org/)
 - **Language:** [TypeScript](https://www.typescriptlang.org/)
 - **AI:** [Google Gemini](https://ai.google.dev/)
+- **State Management:** [Zustand](https://github.com/pmndrs/zustand)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/) & [CSS Modules](https://github.com/css-modules/css-modules)
+- **Component Library:** [shadcn/ui](https://ui.shadcn.com/)
 - **AI Pair Programmer:** [Aider](https://aider.chat/)
-- **Styling:** [Tailwind CSS](https://tailwindcss.com/) & [shadcn/ui](https://ui.shadcn.com/)
 
 ## Using This for Your Own Portfolio
 
