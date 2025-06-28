@@ -8,6 +8,7 @@ import {
   Linkedin,
   Mail,
   Menu,
+  Plus,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -19,11 +20,19 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { useChatStore } from '@/stores/chat-store';
 import { useUiStore } from '@/stores/ui-store';
+import { clearLocalStorage } from '@/utils/local-storage';
 import styles from './mobile-menu.module.css';
 
 export function MobileMenu() {
   const { isMenuOpen, toggleMenu } = useUiStore();
+  const { reset } = useChatStore();
+
+  const handleNewDiscussion = () => {
+    clearLocalStorage();
+    reset();
+  };
 
   const menuItems = [
     {
@@ -78,6 +87,16 @@ export function MobileMenu() {
         align="end"
         className={`${styles.dropdown} z-50 w-56 text-primary-foreground [&_svg]:stroke-primary-foreground`}
       >
+        <DropdownMenuItem
+          asChild
+          className={`cursor-pointer focus:text-primary-foreground ${styles.menuItem}`}
+          onClick={handleNewDiscussion}
+        >
+          <a>
+            <Plus className="mr-2 h-4 w-4" />
+            <span>New Discussion</span>
+          </a>
+        </DropdownMenuItem>
         {menuItems.map(
           ({ Icon, label, href, download, target, rel }, index) =>
             (

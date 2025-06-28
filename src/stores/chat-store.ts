@@ -19,6 +19,7 @@ interface ChatState {
   addMessage: (message: Omit<Message, 'id'>) => Promise<void>;
   setSuggestions: (suggestions: Suggestion[]) => void;
   hydrate: () => void;
+  reset: () => void;
 }
 
 const defaultMessages = INITIAL_MESSAGES.map((message) => ({
@@ -132,5 +133,12 @@ export const useChatStore = create<ChatState>((set, get) => ({
   setSuggestions: (suggestions) => {
     setLocalStorageItem(LocalStorageKeys.SUGGESTIONS, suggestions);
     set({ suggestions });
+  },
+  reset: () => {
+    set({
+      messages: defaultMessages,
+      suggestions: INITIAL_SUGGESTIONS,
+      conversationId: '',
+    });
   },
 }));

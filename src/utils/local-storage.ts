@@ -54,3 +54,16 @@ export const setLocalStorageItem = <T>(key: LocalStorageKeys, value: T): void =>
     console.error(`Failed to save item "${key}" to localStorage:`, e);
   }
 };
+
+/**
+ * Removes all application-specific keys from localStorage.
+ */
+export const clearLocalStorage = (): void => {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  for (const key of Object.values(LocalStorageKeys)) {
+    localStorage.removeItem(key);
+  }
+};
