@@ -28,8 +28,15 @@
 
 .sendButton:hover {
   transform: scale(1.1);
+  cursor: pointer;
 }
 
 .sendButton:disabled {
   opacity: 0.5;
+}
+
+.separator {
+  width: 1px;
+  align-self: stretch;
+  background-color: rgba(255, 255, 255, 0.2);
 }

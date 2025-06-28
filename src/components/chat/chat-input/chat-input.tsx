@@ -61,6 +61,7 @@ const ChatInput = React.forwardRef<HTMLFormElement, ChatInputProps>(
           disabled={isLoading}
           rows={1}
         />
+        <div className={styles.separator} />
         <Button
           type="submit"
           size="icon"
