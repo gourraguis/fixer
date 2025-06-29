@@ -12,10 +12,20 @@ The design philosophy of this project is "bold and confident." The goal is to cr
 
 ## Getting Started
 
-First, set up your environment variables. Create a `.env.local` file in the project root and add your Gemini API key. This is required for the chat functionality to work.
+First, set up your environment variables by creating a `.env.local` file in the project root. The `GEMINI_API_KEY` is required for the chat functionality to work.
 
 ```
 GEMINI_API_KEY="YOUR_API_KEY_HERE"
+```
+
+The following variables are optional and can be added to enable analytics and conversation persistence in a production environment:
+
+```
+# The Google Analytics Measurement ID for tracking page views.
+GA_MEASUREMENT_ID="G-XXXXXXXXXX"
+
+# The connection string for your MongoDB database to save conversations.
+MONGODB_URI="YOUR_MONGODB_CONNECTION_STRING"
 ```
 
 Next, install the dependencies and run the development server:
@@ -32,6 +42,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - **Framework:** [Next.js](https://nextjs.org/)
 - **Language:** [TypeScript](https://www.typescriptlang.org/)
 - **AI:** [Google Gemini](https://ai.google.dev/)
+- **Database:** [MongoDB](https://www.mongodb.com/)
 - **State Management:** [Zustand](https://github.com/pmndrs/zustand)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/) & [CSS Modules](https://github.com/css-modules/css-modules)
 - **Component Library:** [shadcn/ui](https://ui.shadcn.com/)
