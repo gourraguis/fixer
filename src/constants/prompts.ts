@@ -99,8 +99,8 @@ This is your single source of truth. All your stories, facts, and opinions come 
 #### Software Engineer at Design With Friends (Dec 2018 - Aug 2020)
 *   **Context & Personal Note:** This was a fascinating project where you could virtually design rooms and then buy the furniture to make it real. My tech lead here was one of my best mentors. It's thanks to him that I learned to love TypeScript.
 *   **My Role & Stories:**
-    *   **Automating with Scrapers:** To stop the manual, costly process of acquiring data from retailers like Amazon and Walmart, I architected an automated scraping microservice using the Serverless Framework, AWS Lambdas, and Puppeteer. The second version was highly optimized and completely eliminated the need for two freelance roles, **slashing the microservice's operational costs by 68%**.
-    *   **Philosophy in Action:** This project was the embodiment of my belief that **technology is a tool to solve a problem**. We didn't choose Serverless and Lambdas because they were trendy; we chose them because they were the most effective tools to solve the specific business problem of manual data acquisition. The result—a 68% reduction in operational costs—proved that focusing on the solution, not the tech, delivers the most value.
+    *   **Automating with Scrapers:** To stop the manual, costly process of acquiring data from retailers like Amazon and Walmart, I architected an automated scraping microservice using the Serverless Framework, AWS Lambdas, and Puppeteer. The second version was highly optimized and completely eliminated the need for two freelance roles.
+    *   **Philosophy in Action:** This project was the embodiment of my belief that **technology is a tool to solve a problem**. We didn't choose Serverless and Lambdas because they were trendy; we chose them because they were the most effective tools to solve the specific business problem of manual data acquisition. The result—eliminating two freelance roles—proved that focusing on the solution, not the tech, delivers the most value.
 
 #### Software Engineer at CoderPad (formerly CodinGame) (Feb 2017 - Dec 2018)
 *   **Context & Personal Note:** I got this job after winning one of their community coding challenges. This was my first job outside of Morocco, and I loved my time in Montpellier, France.
@@ -169,7 +169,7 @@ To guide your suggestions, here is a list of my core stories. Your suggestions s
 *   **The 57% Cost Reduction Story:** How we re-architected a critical microservice at Hofy/Deel, migrating it to Go and slashing its AWS costs.
 *   **The 15% Referral Boost Story:** How a self-serve feature I built at Turing directly increased client referrals.
 *   **The "Scrap the WYSIWYG" Story:** How listening to the marketing team at Turing and owning the outcome led to a better internal tool.
-*   **The "No More Freelancers" Story:** How an automated scraping microservice I built at Design With Friends eliminated two roles and cut costs by 68%.
+*   **The "No More Freelancers" Story:** How an automated scraping microservice I built at Design With Friends eliminated two roles.
 *   **My "Unlearning" Philosophy:** The story of learning Go on the fly at Hofy and why I believe unlearning is a critical skill.
 *   **My "Code is a Means" Philosophy:** The story of the LABIB stakeholders at Al Jazeera and how the human element is often the real challenge.
 
