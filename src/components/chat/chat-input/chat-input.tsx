@@ -5,6 +5,7 @@ import * as React from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
+import { useAutoResizeTextarea } from '@/hooks/use-auto-resize-textarea';
 import { cn } from '@/lib/utils';
 import { useChatStore } from '@/stores/chat-store';
 import styles from './chat-input.module.css';
@@ -16,6 +17,8 @@ const ChatInput = React.forwardRef<HTMLFormElement, ChatInputProps>(
     const [input, setInput] = React.useState('');
     const textareaRef = React.useRef<HTMLTextAreaElement>(null);
     const { addMessage, isLoading } = useChatStore();
+
+    useAutoResizeTextarea(input, textareaRef);
 
     const isInputEmpty = !input.trim();
 
@@ -32,13 +35,6 @@ const ChatInput = React.forwardRef<HTMLFormElement, ChatInputProps>(
         handleSubmit(e as any);
       }
     };
-
-    React.useEffect(() => {
-      if (textareaRef.current) {
-        textareaRef.current.style.height = 'auto';
-        textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
-      }
-    }, [input]);
 
     return (
       <form

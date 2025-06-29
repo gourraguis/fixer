@@ -41,9 +41,6 @@ export const getLocalStorageItem = <T>(key: LocalStorageKeys, defaultValue: T): 
  */
 export const setLocalStorageItem = <T>(key: LocalStorageKeys, value: T): void => {
   if (typeof window === 'undefined') {
-    console.warn(
-      `Attempted to set localStorage item "${key}" on the server. This operation will be ignored.`
-    );
     return;
   }
 

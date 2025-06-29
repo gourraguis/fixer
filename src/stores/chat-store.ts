@@ -16,7 +16,7 @@ interface ChatState {
   suggestions: Suggestion[];
   isLoading: boolean;
   conversationId: string;
-  addMessage: (message: Omit<Message, 'id'>) => Promise<void>;
+  addMessage: (message: Omit<Message, 'id'>) => void;
   setSuggestions: (suggestions: Suggestion[]) => void;
   hydrate: () => void;
   reset: () => void;
@@ -26,6 +26,66 @@ const defaultMessages = INITIAL_MESSAGES.map((message) => ({
   ...message,
   id: uuidv4(),
 }));
+
+const _updateMessages = (
+  set: (updater: (state: ChatState) => Partial<ChatState>) => void,
+  get: () => ChatState,
+  newMessage: Message
+) => {
+  const updatedMessages = [...get().messages, newMessage];
+  setLocalStorageItem(LocalStorageKeys.MESSAGES, updatedMessages);
+  set((state) => ({ ...state, messages: updatedMessages }));
+};
+
+const _fetchChatReply = async (get: () => ChatState, set: any) => {
+  const { messages, conversationId } = get();
+  try {
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages, conversationId }),
+    });
+
+    if (!response.ok) throw new Error('Chat API call failed');
+
+    const data = await response.json();
+    const replyMessage: Message = {
+      id: uuidv4(),
+      role: 'model',
+      text: data.reply,
+    };
+    _updateMessages(set, get, replyMessage);
+  } catch (error) {
+    const errorMessage: Message = {
+      id: uuidv4(),
+      role: 'model',
+      text:
+        "Whoops! My AI assistant must be on a coffee break, or I've forgotten to pay the cloud bill again. Please reach out to me on email or LinkedIn instead.",
+    };
+    _updateMessages(set, get, errorMessage);
+  }
+};
+
+const _fetchSuggestions = async (get: () => ChatState, set: any) => {
+  try {
+    const response = await fetch('/api/suggestions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: get().messages }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      const newSuggestions = data.suggestions || [];
+      setLocalStorageItem(LocalStorageKeys.SUGGESTIONS, newSuggestions);
+      set({ suggestions: newSuggestions });
+    } else {
+      console.error('Suggestions API call failed');
+    }
+  } catch (error) {
+    console.error('Suggestion fetch failed:', error);
+  }
+};
 
 export const useChatStore = create<ChatState>((set, get) => ({
   messages: defaultMessages,
@@ -57,77 +117,19 @@ export const useChatStore = create<ChatState>((set, get) => ({
     });
   },
   addMessage: async (message) => {
-    const newMessage: Message = {
-      id: uuidv4(),
-      ...message,
-    };
+    const userMessage: Message = { id: uuidv4(), ...message };
+    _updateMessages(set, get, userMessage);
 
-    const updatedMessagesWithUser = [...get().messages, newMessage];
-    setLocalStorageItem(LocalStorageKeys.MESSAGES, updatedMessagesWithUser);
     setLocalStorageItem(LocalStorageKeys.SUGGESTIONS, []);
-    set({ messages: updatedMessagesWithUser, suggestions: [] });
+    set({ suggestions: [], isLoading: true });
 
     if (message.role === 'user') {
-      set({ isLoading: true });
-
-      const { messages, conversationId } = get();
-
-      // --- Fetch Chat Reply ---
-      try {
-        const chatResponse = await fetch('/api/chat', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ messages, conversationId }),
-        });
-
-        if (!chatResponse.ok) {
-          throw new Error('Chat API call failed');
-        }
-
-        const chatData = await chatResponse.json();
-        const replyMessage: Message = {
-          id: uuidv4(),
-          role: 'model',
-          text: chatData.reply,
-        };
-
-        const updatedMessagesWithReply = [...get().messages, replyMessage];
-        setLocalStorageItem(LocalStorageKeys.MESSAGES, updatedMessagesWithReply);
-        set({ messages: updatedMessagesWithReply });
-      } catch (error) {
-        const errorMessage: Message = {
-          id: uuidv4(),
-          role: 'model',
-          text:
-            "Whoops! My AI assistant must be on a coffee break, or I've forgotten to pay the cloud bill again. Please reach out to me on email or LinkedIn instead.",
-        };
-        const updatedMessagesWithError = [...get().messages, errorMessage];
-        setLocalStorageItem(LocalStorageKeys.MESSAGES, updatedMessagesWithError);
-        set({ messages: updatedMessagesWithError });
-      } finally {
-        set({ isLoading: false });
-      }
-
-      // --- Fetch Suggestions (Silently) ---
-      try {
-        const suggestionsResponse = await fetch('/api/suggestions', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ messages: get().messages }),
-        });
-
-        if (suggestionsResponse.ok) {
-          const suggestionsData = await suggestionsResponse.json();
-          const newSuggestions = suggestionsData.suggestions || [];
-          setLocalStorageItem(LocalStorageKeys.SUGGESTIONS, newSuggestions);
-          set({ suggestions: newSuggestions });
-        } else {
-          console.error('Suggestions API call failed');
-        }
-      } catch (error) {
-        console.error('Suggestion fetch failed:', error);
-        // Do not show an error message for suggestions, as it's non-critical.
-      }
+      await _fetchChatReply(get, set);
+      set({ isLoading: false });
+      // Fetch suggestions silently in the background after the reply is received.
+      _fetchSuggestions(get, set);
+    } else {
+      set({ isLoading: false });
     }
   },
   setSuggestions: (suggestions) => {
