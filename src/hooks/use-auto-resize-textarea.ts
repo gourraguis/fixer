@@ -2,7 +2,7 @@ import React from 'react';
 
 export function useAutoResizeTextarea(
   value: string,
-  ref: React.RefObject<HTMLTextAreaElement>,
+  ref: React.RefObject<HTMLTextAreaElement | null>,
 ) {
   React.useEffect(() => {
     if (ref.current) {
