@@ -35,11 +35,13 @@ export async function POST(request: Request) {
     const reply = await chatService.generateReply(messages);
 
     const updatedMessages: Message[] = [...messages, { role: 'assistant', content: reply }];
-    
-    // Fire-and-forget the database save operation.
-    conversationService.saveConversation(conversationId, updatedMessages).catch(error => {
-      console.error('Failed to save conversation in background:', error);
-    });
+
+    if (process.env.NODE_ENV === 'production') {
+      // Fire-and-forget the database save operation in production.
+      conversationService.saveConversation(conversationId, updatedMessages).catch(error => {
+        console.error('Failed to save conversation in background:', error);
+      });
+    }
 
     return NextResponse.json({ reply });
   } catch (error: any) {
