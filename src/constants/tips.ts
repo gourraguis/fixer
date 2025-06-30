@@ -1,14 +1,11 @@
 export const LOADING_TIPS = [
   // Style 1: Tech/Business Humor
   'Translating developer-speak to human...',
-  "It's not a bug, it's an undocumented feature.",
-  'Still trying to exit Vim...',
 
   // Style 2: Whimsical Sci-Fi/AI Humor
   'Calibrating my humor matrix...',
   'Aligning warp drives...',
   'Searching for life on Mars... and in my legacy code...',
-  'Reticulating splines...',
 
   // Style 3: "Easter Egg" Project Trivia
   'Ask me how I helped save news reporters 20% of their time.',
