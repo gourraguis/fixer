@@ -2,14 +2,13 @@ import { Suggestion } from '@/types/suggestion';
 
 export const INITIAL_SUGGESTIONS: Suggestion[] = [
   {
-    emoji: '🏆',
-    title: 'How a coding challenge got me a job',
-    prompt: "What's the story about winning a coding challenge and getting a job?",
+    emoji: '✨',
+    title: "This AI's origin story",
+    prompt: "What is this AI's origin story?",
   },
   {
-    emoji: '🤖',
-    title: 'Automating away two jobs',
-    prompt:
-      'Tell me about the scraping microservice that cut costs by 68% at Design With Friends.',
+    emoji: '🧠',
+    title: 'Why unlearning is a skill',
+    prompt: "You mentioned 'unlearning is a skill.' Can you tell me the story behind that?",
   },
 ];
