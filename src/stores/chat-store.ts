@@ -27,18 +27,20 @@ const defaultMessages = INITIAL_MESSAGES.map((message) => ({
   id: uuidv4(),
 }));
 
-const _updateMessages = (
-  set: (updater: (state: ChatState) => Partial<ChatState>) => void,
-  get: () => ChatState,
-  newMessage: Message
-) => {
-  const updatedMessages = [...get().messages, newMessage];
-  setLocalStorageItem(LocalStorageKeys.MESSAGES, updatedMessages);
-  set((state) => ({ ...state, messages: updatedMessages }));
-};
-
 const _fetchChatReply = async (get: () => ChatState, set: any) => {
   const { messages, conversationId } = get();
+
+  const modelMessageId = uuidv4();
+  const newModelMessage: Message = {
+    id: modelMessageId,
+    role: 'model',
+    text: '',
+  };
+
+  set((state: ChatState) => ({
+    messages: [...state.messages, newModelMessage],
+  }));
+
   try {
     const response = await fetch('/api/chat', {
       method: 'POST',
@@ -46,23 +48,44 @@ const _fetchChatReply = async (get: () => ChatState, set: any) => {
       body: JSON.stringify({ messages, conversationId }),
     });
 
-    if (!response.ok) throw new Error('Chat API call failed');
+    if (!response.body) {
+      throw new Error('No response body');
+    }
 
-    const data = await response.json();
-    const replyMessage: Message = {
-      id: uuidv4(),
-      role: 'model',
-      text: data.reply,
-    };
-    _updateMessages(set, get, replyMessage);
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let done = false;
+
+    while (!done) {
+      const { value, done: readerDone } = await reader.read();
+      done = readerDone;
+      const chunk = decoder.decode(value, { stream: true });
+
+      set((state: ChatState) => ({
+        messages: state.messages.map((msg) =>
+          msg.id === modelMessageId
+            ? { ...msg, text: msg.text + chunk }
+            : msg
+        ),
+      }));
+    }
   } catch (error) {
-    const errorMessage: Message = {
-      id: uuidv4(),
-      role: 'model',
-      text:
-        "Whoops! My AI assistant must be on a coffee break, or I've forgotten to pay the cloud bill again. Please reach out to me on email or LinkedIn instead.",
-    };
-    _updateMessages(set, get, errorMessage);
+    set((state: ChatState) => ({
+      messages: state.messages.map((msg) =>
+        msg.id === modelMessageId
+          ? {
+              ...msg,
+              text: "Whoops! My AI assistant must be on a coffee break, or I've forgotten to pay the cloud bill again. Please reach out to me on email or LinkedIn instead.",
+            }
+          : msg
+      ),
+    }));
+  } finally {
+    set({ isLoading: false });
+    // Persist the final state of the messages to local storage
+    setLocalStorageItem(LocalStorageKeys.MESSAGES, get().messages);
+    // Fetch suggestions silently in the background
+    _fetchSuggestions(get, set);
   }
 };
 
@@ -118,16 +141,12 @@ export const useChatStore = create<ChatState>((set, get) => ({
   },
   addMessage: async (message) => {
     const userMessage: Message = { id: uuidv4(), ...message };
-    _updateMessages(set, get, userMessage);
-
-    setLocalStorageItem(LocalStorageKeys.SUGGESTIONS, []);
-    set({ suggestions: [], isLoading: true });
+    const updatedMessages = [...get().messages, userMessage];
+    setLocalStorageItem(LocalStorageKeys.MESSAGES, updatedMessages);
+    set({ messages: updatedMessages, suggestions: [], isLoading: true });
 
     if (message.role === 'user') {
       await _fetchChatReply(get, set);
-      set({ isLoading: false });
-      // Fetch suggestions silently in the background after the reply is received.
-      _fetchSuggestions(get, set);
     } else {
       set({ isLoading: false });
     }
