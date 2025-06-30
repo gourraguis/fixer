@@ -4,7 +4,6 @@ export const LOADING_TIPS = [
 
   // Style 2: Whimsical Sci-Fi/AI Humor
   'Calibrating my humor matrix...',
-  'Aligning warp drives...',
   'Searching for life on Mars... and in my legacy code...',
 
   // Style 3: "Easter Egg" Project Trivia
@@ -15,7 +14,6 @@ export const LOADING_TIPS = [
   'Ask me about the crypto platform I worked on that handled over $1.5M.',
 
   // Style 4: Philosophical Tech Takes
-  'The best code is the code that was never written.',
   'Good design is obvious. Great design is transparent.',
   'Measure twice, code once, refactor thrice.',
   'Simplicity is the ultimate sophistication.',
