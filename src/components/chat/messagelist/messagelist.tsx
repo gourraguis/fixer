@@ -25,18 +25,22 @@ const MessageList = React.forwardRef<HTMLDivElement, MessageListProps>(
         )}
         {...props}
       >
-        {messages.flatMap((message, messageIndex) =>
-          message.text
-            .split('\n\n')
-            .filter((paragraph) => paragraph.trim() !== '')
+        {messages.flatMap((message, messageIndex) => {
+          const paragraphs =
+            message.role === 'model'
+              ? message.text.split('\n\n')
+              : [message.text];
+
+          return paragraphs
+            .filter((p) => p.trim() !== '')
             .map((paragraph, paragraphIndex) => (
               <Message
                 key={`${messageIndex}-${paragraphIndex}`}
                 role={message.role}
                 text={paragraph}
               />
-            )),
-        )}
+            ));
+        })}
         <div ref={messagesEndRef} />
       </div>
     );
