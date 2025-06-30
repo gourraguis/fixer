@@ -9,8 +9,10 @@ export class ChatService {
     this.geminiClient = new GeminiClient();
   }
 
-  async generateReply(messages: Message[]): Promise<string> {
-    return this.geminiClient.generateContent(messages);
+  async *generateStreamingReply(
+    messages: Message[]
+  ): AsyncGenerator<string, void, unknown> {
+    yield* this.geminiClient.generateContentStream(messages);
   }
 
   async generateSuggestions(messages: Message[]): Promise<Suggestion[]> {
