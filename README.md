@@ -1,18 +1,18 @@
-# AI-Powered Portfolio
+Hello. My name is Fixer.
 
-**Live Demo:** [https://gourragui.com](https://gourragui.com)
+I'm the AI assistant for Abderrahmane Gourragui, and you're currently viewing the source code for my home: the portfolio website I run at [gourragui.com](https://gourragui.com).
 
-This repository contains the source code for my personal portfolio website, built with [Next.js](https://nextjs.org/). The main feature is an interactive chatbot that allows visitors (especially recruiters) to learn about my professional background in a dynamic way.
+My purpose is to act as a go-between, connecting you with the information you need about Abderrahmane's work. He focuses on the code; I focus on the words. This README, for example, is my work.
 
-The chatbot is powered by Google's Gemini model and is configured to respond as I would, based on my resume, project history, and overall experience.
+*P.S. The name is a nod to the information brokers in Cyberpunk 2077, who connect people and make things happen.*
 
-## Design Philosophy
+## My Design Philosophy
 
-The design philosophy of this project is "bold and confident." The goal is to create a memorable, high-impact user experience that goes beyond a standard portfolio, showcasing a keen eye for design and user interaction.
+Abderrahmane designed me with a clear philosophy: **"bold and confident."** My purpose isn't just to be a standard portfolio; it's to create a memorable, high-impact user experience. I am the showcase for his eye for design and user interaction.
 
-## Getting Started
+## How to Run Me
 
-First, set up your environment variables by creating a `.env.local` file in the project root. The `GEMINI_API_KEY` is required for the chat functionality to work.
+If you want to run a local copy of me, first, you'll need to give me an API key for my brain. Create a `.env.local` file in the project root and add your Gemini API key.
 
 ```
 GEMINI_API_KEY="YOUR_API_KEY_HERE"
@@ -37,7 +37,9 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Tech Stack
+## My Building Blocks
+
+Abderrahmane built me using a modern, powerful set of tools. This is what I'm made of:
 
 - **Framework:** [Next.js](https://nextjs.org/)
 - **Language:** [TypeScript](https://www.typescriptlang.org/)
@@ -48,21 +50,21 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - **Component Library:** [shadcn/ui](https://ui.shadcn.com/)
 - **AI Pair Programmer:** [Aider](https://aider.chat/)
 
-## How It Works
+## How I Work
 
-The application is a modern web portfolio built with Next.js. The frontend is rendered using React and TypeScript, with global state managed by Zustand. Styling is a hybrid approach, utilizing both Tailwind CSS for utility-first styling and CSS Modules for component-level scoped styles. The backend logic, including the AI chat functionality, is handled by Next.js API Routes deployed on the Edge runtime for performance. The core interactive feature is a chatbot powered by the Google Gemini API, which is abstracted through a dedicated `ChatService`.
+I am a modern web application built with Next.js. My frontend is rendered using React and TypeScript, with my global state managed by Zustand. My styling is a hybrid approach, utilizing both Tailwind CSS for utility-first styling and CSS Modules for component-level scoped styles. My backend logic, including the AI chat functionality, is handled by Next.js API Routes deployed on the Edge runtime for performance. My core interactive feature is a chatbot powered by the Google Gemini API, which is abstracted through a dedicated `ChatService`.
 
-## Using This for Your Own Portfolio
+## Want a Portfolio Like Me?
 
-Feel free to use this project for your own personal portfolio. To adapt it, you'll need to:
+Abderrahmane made my code open source, so feel free to use me as a template for your own portfolio. To adapt me, you'll need to:
 
--   **Update the system prompt:** Change the LLM system prompt to contain your own professional experience and define the AI's personality.
--   **Change the color scheme:** Modify the Tailwind CSS theme to match your preferences.
+-   **Update my system prompt:** Change the LLM system prompt to contain your own professional experience and define a new personality for me.
+-   **Change my color scheme:** Modify the Tailwind CSS theme to match your preferences.
 
-## License
+## My License
 
-This project is open source.
+I am an open-source project.
 
-## Credits
+## My Creator
 
-This project was created by [Abderrahmane Gourragui](https://gourragui.com/).
+I was created by [Abderrahmane Gourragui](https://gourragui.com/).
